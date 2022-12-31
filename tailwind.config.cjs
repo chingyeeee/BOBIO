@@ -16,8 +16,11 @@ module.exports = {
         n6: "#78797d",
         nav: "rgba(255, 250, 231, 0.85)",
       },
+      boxShadow: {
+        lv1: "0 4px 4px rgba(87, 54, 5, 0.25)",
+      },
       borderRadius: {
-        btn: "1.25rem",
+        btn: "1.875rem",
       },
       fontSize: {
         sm: [
@@ -73,7 +76,7 @@ module.exports = {
           {
             lineHeight: "2.5rem",
             letterSpacing: "0.05em",
-            fontWeight: "900",
+            fontWeight: "700",
           },
         ],
         "6xl": [
@@ -96,7 +99,7 @@ module.exports = {
     },
     fontFamily: {
       rocknroll: ["RocknRoll One", "sans-serif"],
-      notosans: ["Noto Sans TC", "sans-serif"],
+      notoserif: ["Noto Serif TC", "serif"],
     },
     fontSize: {
       sm: [
