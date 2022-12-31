@@ -26,7 +26,7 @@ const Pray = () => {
           />
         </div>
       </div>
-      <div className="hidden md:block md:w-6/12 lg:w-auto">
+      <div className="hidden md:block md:w-6/12 xl:w-auto">
         <img src={PrayImage} alt="立即祈願" />
       </div>
 
@@ -55,7 +55,7 @@ const DrawLots = () => {
           />
         </div>
       </div>
-      <div className="hidden md:block md:w-6/12 lg:w-auto">
+      <div className="hidden md:block md:w-6/12 xl:w-auto">
         <img src={DrawLotsImage} alt="前往求籤" />
       </div>
       <img
