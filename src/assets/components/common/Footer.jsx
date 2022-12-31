@@ -8,7 +8,7 @@ export const Footer = () => {
       <div className="container flex gap-8 mx-auto items-center justify-between">
         <div className="mx-auto md:m-0 w-auto lg:flex items-center gap-12">
           <img src={Logo} alt="BOBIO" />
-          <p className="text-n1 hidden lg:block text-4xl font-rocknroll">
+          <p className="text-n1 hidden lg:block text-h1 font-rocknroll">
             用BOBIO就有庇佑
           </p>
         </div>
