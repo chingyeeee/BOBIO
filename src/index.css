@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=RocknRoll+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=RocknRoll+One&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +6,7 @@
 
 @layer base {
   html {
-    font-family: Noto Sans TC, system-ui, sans-serif;
+    font-family: Noto Serif TC, serif, system-ui, sans-serif;
     background-color: #fffae7;
   }
 }
