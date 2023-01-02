@@ -96,68 +96,78 @@ module.exports = {
           },
         ],
       },
+      fontSize: {
+        caption: [
+          "0.875rem",
+          {
+            lineHeight: "1.25rem",
+            letterSpacing: "0.05em",
+            fontWeight: "400",
+          },
+        ],
+        normal: [
+          "1rem",
+          {
+            lineHeight: "1.5rem",
+            letterSpacing: "0.05em",
+            fontWeight: "400",
+          },
+        ],
+        lg: [
+          "1.125rem",
+          {
+            lineHeight: "1.75rem",
+            letterSpacing: "0.05em",
+            fontWeight: "400",
+          },
+        ],
+        xl: [
+          "1.5rem",
+          {
+            lineHeight: "2rem",
+            letterSpacing: "0.05em",
+            fontWeight: "500",
+          },
+        ],
+        xxl: [
+          "1.75rem",
+          {
+            lineHeight: "2.25rem",
+            letterSpacing: "0.05em",
+            fontWeight: "500",
+          },
+        ],
+        h2: [
+          "2rem",
+          {
+            lineHeight: "2.5rem",
+            letterSpacing: "0.05em",
+            fontWeight: "700",
+          },
+        ],
+        h1: [
+          "2.25rem",
+          {
+            lineHeight: "2.5rem",
+            letterSpacing: "0.05em",
+            fontWeight: "900",
+          },
+        ],
+      },
+      animation: {
+        "scroll-down": "scroll-down 1.5s linear infinite",
+      },
+      keyframes: {
+        "scroll-down": {
+          "0%": { transform: "translateY(0)", opacity: "0" },
+          "50%": { opacity: "1" },
+          "100%": { transform: "translateY(20px)", opacity: "0" },
+        },
+      },
     },
     fontFamily: {
       rocknroll: ["RocknRoll One", "sans-serif"],
       notoserif: ["Noto Serif TC", "serif"],
-    },
-    fontSize: {
-      sm: [
-        "0.875rem",
-        {
-          lineHeight: "1.25rem",
-          letterSpacing: "0.05em",
-          fontWeight: "400",
-        },
-      ],
-      base: [
-        "1rem",
-        {
-          lineHeight: "1.5rem",
-          letterSpacing: "0.05em",
-          fontWeight: "400",
-        },
-      ],
-      lg: [
-        "1.125rem",
-        {
-          lineHeight: "1.75rem",
-          letterSpacing: "0.05em",
-          fontWeight: "400",
-        },
-      ],
-      "2xl": [
-        "1.5rem",
-        {
-          lineHeight: "2rem",
-          letterSpacing: "0.05em",
-          fontWeight: "500",
-        },
-      ],
-      h3: [
-        "1.75rem",
-        {
-          lineHeight: "2.25rem",
-          letterSpacing: "0.05em",
-          fontWeight: "500",
-        },
-      ],
-      h2: [
-        "2rem",
-        {
-          lineHeight: "2.5rem",
-          letterSpacing: "0.05em",
-          fontWeight: "700",
-        },
-      ],
-      h1: [
-        "2.25rem",
-        {
-          lineHeight: "2.5rem",
-          letterSpacing: "0.05em",
-          fontWeight: "900",
-        },
-      ],
     },
   },
   plugins: [],
