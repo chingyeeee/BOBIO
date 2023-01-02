@@ -8,7 +8,7 @@ import { BsArrowRight } from "react-icons/bs";
 
 const Pray = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center">
+    <div className="flex flex-col md:flex-row items-center 2xl:container 2xl:mx-auto">
       <div className="flex-1 flex justify-center items-center">
         <div className="flex items-center md:items-start pt-10 md:pt-0 relative flex-col gap-8">
           <h3 className="text-h2 text-p3">祈願</h3>
@@ -37,7 +37,7 @@ const Pray = () => {
 
 const DrawLots = () => {
   return (
-    <div className="flex flex-col md:flex-row-reverse items-center">
+    <div className="flex flex-col md:flex-row-reverse items-center 2xl:container 2xl:mx-auto">
       <div className="flex-1 flex justify-center items-center">
         <div className="flex flex-col gap-8 items-center md:items-start pt-10 md:pt-0 relative">
           <h3 className="text-h2 text-p3">線上求籤</h3>
