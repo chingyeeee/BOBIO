@@ -31,7 +31,7 @@ module.exports = {
       },
       fontSize: {
         caption: [
-          "0.875rem",
+          "0.875rem", //14px
           {
             lineHeight: "1.25rem",
             letterSpacing: "0.05em",
@@ -39,7 +39,7 @@ module.exports = {
           },
         ],
         normal: [
-          "1rem",
+          "1rem", //16px
           {
             lineHeight: "1.5rem",
             letterSpacing: "0.05em",
@@ -47,7 +47,7 @@ module.exports = {
           },
         ],
         lg: [
-          "1.125rem",
+          "1.125rem", //18px
           {
             lineHeight: "1.75rem",
             letterSpacing: "0.05em",
@@ -55,7 +55,7 @@ module.exports = {
           },
         ],
         xl: [
-          "1.5rem",
+          "1.5rem", //24px
           {
             lineHeight: "2rem",
             letterSpacing: "0.05em",
@@ -63,7 +63,7 @@ module.exports = {
           },
         ],
         h3: [
-          "1.75rem",
+          "1.75rem", //28px
           {
             lineHeight: "2.25rem",
             letterSpacing: "0.05em",
@@ -71,7 +71,7 @@ module.exports = {
           },
         ],
         h2: [
-          "2rem",
+          "2rem", //32px
           {
             lineHeight: "2.5rem",
             letterSpacing: "0.05em",
@@ -79,7 +79,7 @@ module.exports = {
           },
         ],
         h1: [
-          "2.25rem",
+          "2.25rem", //36px
           {
             lineHeight: "2.5rem",
             letterSpacing: "0.05em",
