@@ -16,7 +16,7 @@ export const Footer = () => {
         <div className="flex flex-col flex-1 md:flex-initial">
           <ul className="hidden flex-col border-b border-n1 pb-4 gap-4 items-end md:flex-row md:gap-12 md:flex">
             <li>
-              <FooLink text={"立即祈願"} color={"text-n1"} />
+              <FooLink text={"立即祈願"} color={"text-n1"} href={"/pray"} />
             </li>
             <li>
               <FooLink text={"線上求籤"} color={"text-n1"} />

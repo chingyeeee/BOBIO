@@ -25,6 +25,7 @@ const Pray = () => {
             className="absolute -bottom-1/3 md:static"
             text={"立即祈願"}
             icon={<BsArrowRight />}
+            href={"/pray"}
           />
         </div>
       </div>

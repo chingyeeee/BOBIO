@@ -23,7 +23,7 @@ export const NavBar = () => {
           } transition-translate duration-700 bg-nav md:bg-transparent  md:h-auto md:static md:flex-row md:ml-5 md:gap-6 flex-1`}
         >
           <li>
-            <NavLink color="text-p3" text="立即祈願" />
+            <NavLink color="text-p3" text="立即祈願" href={"/pray"} />
           </li>
           <li>
             <NavLink color="text-p3" text="線上求籤" />
