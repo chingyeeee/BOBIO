@@ -9,6 +9,90 @@
       "鮮果": ["香蕉", "蘋果", "水梨"],
       "甜食": ["糕餅", "餅乾", "糖果"]
     },
-    "cardSets": { "三牲": "", "鮮果": "", "甜食": "" }
+    "cardSets": {
+      "三牲": "health01.png",
+      "鮮果": "health02.png",
+      "甜食": "health03.png"
+    }
+  },
+  "love": {
+    "image": "god_love.png",
+    "id": "love",
+    "category": "姻緣",
+    "god": "月老",
+    "foodSets": {
+      "三牲": ["豬", "雞", "魚"],
+      "鮮果": ["香蕉", "蘋果", "水梨"],
+      "甜食": ["糕餅", "餅乾", "糖果"]
+    },
+    "cardSets": {
+      "三牲": "love01.png",
+      "鮮果": "love02.png",
+      "甜食": "love03.png"
+    }
+  },
+  "safety": {
+    "image": "god_safety.png",
+    "id": "safety",
+    "category": "平安",
+    "god": "媽祖",
+    "foodSets": {
+      "三牲": ["豬", "雞", "魚"],
+      "鮮果": ["香蕉", "蘋果", "水梨"],
+      "甜食": ["糕餅", "餅乾", "糖果"]
+    },
+    "cardSets": {
+      "三牲": "safety01.png",
+      "鮮果": "safety02.png",
+      "甜食": "safety03.png"
+    }
+  },
+  "study": {
+    "image": "god_study.png",
+    "id": "study",
+    "category": "學業",
+    "god": "文昌帝君",
+    "foodSets": {
+      "三牲": ["豬", "雞", "魚"],
+      "鮮果": ["香蕉", "蘋果", "水梨"],
+      "甜食": ["糕餅", "餅乾", "糖果"]
+    },
+    "cardSets": {
+      "三牲": "study01.png",
+      "鮮果": "study02.png",
+      "甜食": "study03.png"
+    }
+  },
+  "wealth": {
+    "image": "god_wealth.png",
+    "id": "wealth",
+    "category": "財富",
+    "god": "財神",
+    "foodSets": {
+      "三牲": ["豬", "雞", "魚"],
+      "鮮果": ["香蕉", "蘋果", "水梨"],
+      "甜食": ["糕餅", "餅乾", "糖果"]
+    },
+    "cardSets": {
+      "三牲": "wealth01.png",
+      "鮮果": "wealth02.png",
+      "甜食": "wealth03.png"
+    }
+  },
+  "work": {
+    "image": "god_work.png",
+    "id": "work",
+    "category": "事業",
+    "god": "關公",
+    "foodSets": {
+      "三牲": ["豬", "雞", "魚"],
+      "鮮果": ["香蕉", "蘋果", "水梨"],
+      "甜食": ["糕餅", "餅乾", "糖果"]
+    },
+    "cardSets": {
+      "三牲": "work01.png",
+      "鮮果": "work02.png",
+      "甜食": "work03.png"
+    }
   }
 }
