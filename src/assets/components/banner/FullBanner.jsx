@@ -4,7 +4,7 @@ import { BsChevronDoubleDown } from "react-icons/bs";
 export const FullBanner = ({ slogan }) => {
   return (
     <div className="relative flex items-center justify-center bg-fullbanner h-[calc(100vh_-_15vh)] bg-center bg-cover">
-      <p className="absolute text-n1 text-h1 md:text-6xl xl:text-8xl font-rocknroll">
+      <p className="absolute text-n1 text-h1 md:text-5xl xl:text-6xl font-rocknroll">
         {slogan}
       </p>
       <div className="absolute bottom-12 flex flex-col items-center ">
