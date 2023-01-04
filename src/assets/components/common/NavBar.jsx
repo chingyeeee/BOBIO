@@ -20,7 +20,7 @@ export const NavBar = () => {
         <ul
           className={`flex flex-col absolute h-[calc(100vh_-_66px)] w-screen top-16 items-center gap-10 pt-20 md:pt-0 md:items-start ${
             showMenu ? "left-0" : "left-full"
-          } transition-translate duration-700 bg-nav md:bg-transparent  md:h-auto md:static md:flex-row md:ml-5 md:gap-6 flex-1`}
+          } transition-translate duration-700 bg-p2 md:bg-transparent  md:h-auto md:static md:flex-row md:ml-5 md:gap-6 flex-1`}
         >
           <li>
             <NavLink color="text-p3" text="立即祈願" href={"/pray"} />
