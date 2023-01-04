@@ -1,6 +1,6 @@
 [
   {
-    "image": "god_health.png",
+    "image": "god_health.svg",
     "id": "health",
     "category": "健康",
     "god": "保生大帝",
@@ -10,14 +10,14 @@
       "甜食": ["糕餅", "餅乾", "糖果"]
     },
     "cardSets": {
-      "三牲": "health01.png",
-      "鮮果": "health02.png",
-      "甜食": "health03.png"
+      "三牲": "health01.svg",
+      "鮮果": "health02.svg",
+      "甜食": "health03.svg"
     },
     "icon": "GiHealing"
   },
   {
-    "image": "god_love.png",
+    "image": "god_love.svg",
     "id": "love",
     "category": "姻緣",
     "god": "月老",
@@ -27,14 +27,14 @@
       "甜食": ["糕餅", "餅乾", "糖果"]
     },
     "cardSets": {
-      "三牲": "love01.png",
-      "鮮果": "love02.png",
-      "甜食": "love03.png"
+      "三牲": "love01.svg",
+      "鮮果": "love02.svg",
+      "甜食": "love03.svg"
     },
     "icon": "FaHeartbeat"
   },
   {
-    "image": "god_safety.png",
+    "image": "god_safety.svg",
     "id": "safety",
     "category": "平安",
     "god": "媽祖",
@@ -44,14 +44,14 @@
       "甜食": ["糕餅", "餅乾", "糖果"]
     },
     "cardSets": {
-      "三牲": "safety01.png",
-      "鮮果": "safety02.png",
-      "甜食": "safety03.png"
+      "三牲": "safety01.svg",
+      "鮮果": "safety02.svg",
+      "甜食": "safety03.svg"
     },
     "icon": "AiFillSafetyCertificate"
   },
   {
-    "image": "god_study.png",
+    "image": "god_study.svg",
     "id": "study",
     "category": "學業",
     "god": "文昌帝君",
@@ -61,14 +61,14 @@
       "甜食": ["糕餅", "餅乾", "糖果"]
     },
     "cardSets": {
-      "三牲": "study01.png",
-      "鮮果": "study02.png",
-      "甜食": "study03.png"
+      "三牲": "study01.svg",
+      "鮮果": "study02.svg",
+      "甜食": "study03.svg"
     },
     "icon": "FaGraduationCap"
   },
   {
-    "image": "god_wealth.png",
+    "image": "god_wealth.svg",
     "id": "wealth",
     "category": "財富",
     "god": "財神",
@@ -78,14 +78,14 @@
       "甜食": ["糕餅", "餅乾", "糖果"]
     },
     "cardSets": {
-      "三牲": "wealth01.png",
-      "鮮果": "wealth02.png",
-      "甜食": "wealth03.png"
+      "三牲": "wealth01.svg",
+      "鮮果": "wealth02.svg",
+      "甜食": "wealth03.svg"
     },
     "icon": "RiMoneyDollarCircleFill"
   },
   {
-    "image": "god_work.png",
+    "image": "god_work.svg",
     "id": "work",
     "category": "事業",
     "god": "關公",
@@ -95,9 +95,9 @@
       "甜食": ["糕餅", "餅乾", "糖果"]
     },
     "cardSets": {
-      "三牲": "work01.png",
-      "鮮果": "work02.png",
-      "甜食": "work03.png"
+      "三牲": "work01.svg",
+      "鮮果": "work02.svg",
+      "甜食": "work03.svg"
     },
     "icon": "MdWork"
   }
