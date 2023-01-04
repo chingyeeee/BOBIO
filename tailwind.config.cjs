@@ -106,7 +106,7 @@ module.exports = {
       },
       animation: {
         "scroll-down": "scroll-down 1.5s linear infinite",
-        ringing: "ringing 1.5s linear infinite",
+        ringing: "ringing 1s linear infinite alternate",
       },
       keyframes: {
         "scroll-down": {
