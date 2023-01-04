@@ -13,7 +13,8 @@
       "三牲": "health01.png",
       "鮮果": "health02.png",
       "甜食": "health03.png"
-    }
+    },
+    "icon": "GiHealing"
   },
   {
     "image": "god_love.png",
@@ -29,7 +30,8 @@
       "三牲": "love01.png",
       "鮮果": "love02.png",
       "甜食": "love03.png"
-    }
+    },
+    "icon": "FaHeartbeat"
   },
   {
     "image": "god_safety.png",
@@ -45,7 +47,8 @@
       "三牲": "safety01.png",
       "鮮果": "safety02.png",
       "甜食": "safety03.png"
-    }
+    },
+    "icon": "AiFillSafetyCertificate"
   },
   {
     "image": "god_study.png",
@@ -61,7 +64,8 @@
       "三牲": "study01.png",
       "鮮果": "study02.png",
       "甜食": "study03.png"
-    }
+    },
+    "icon": "FaGraduationCap"
   },
   {
     "image": "god_wealth.png",
@@ -77,7 +81,8 @@
       "三牲": "wealth01.png",
       "鮮果": "wealth02.png",
       "甜食": "wealth03.png"
-    }
+    },
+    "icon": "RiMoneyDollarCircleFill"
   },
   {
     "image": "god_work.png",
@@ -93,6 +98,7 @@
       "三牲": "work01.png",
       "鮮果": "work02.png",
       "甜食": "work03.png"
-    }
+    },
+    "icon": "MdWork"
   }
 ]
