@@ -1,4 +1,4 @@
-import Logo from "../../images/logo_footer.svg";
+import Logo from "../../images/logo.svg";
 import { FooLink, SocailLink } from "./NavLink";
 import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 
@@ -7,7 +7,7 @@ export const Footer = () => {
     <footer className="bg-s1 p-3 w-full border-b-2 border-p3">
       <div className="container flex gap-8 mx-auto items-center justify-between">
         <div className="mx-auto md:m-0 w-auto lg:flex items-center gap-12">
-          <img src={Logo} alt="BOBIO" />
+          <img className="w-52 md:w-36" src={Logo} alt="BOBIO" />
           <p className="text-n1 hidden lg:block text-h1 font-rocknroll">
             用BOBIO就有庇佑
           </p>
