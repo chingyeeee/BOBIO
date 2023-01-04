@@ -22,6 +22,7 @@ module.exports = {
         n1: "#ffffff",
         n6: "#78797d",
         nav: "rgba(255, 250, 231, 0.85)",
+        cate: "rgba(253, 191, 82, 0.5)",
       },
       boxShadow: {
         lv1: "0 4px 4px rgba(87, 54, 5, 0.25)",
@@ -105,6 +106,7 @@ module.exports = {
       },
       animation: {
         "scroll-down": "scroll-down 1.5s linear infinite",
+        ringing: "ringing 1.5s linear infinite",
       },
       keyframes: {
         "scroll-down": {
@@ -112,6 +114,19 @@ module.exports = {
           "50%": { opacity: "1" },
           "100%": { transform: "translateY(20px)", opacity: "0" },
         },
+        ringing: {
+          "0%": { boxShadow: "0 0 0 0px rgba(253, 191, 82, 0.5)" },
+          "100%": { boxShadow: "0 0 0 8px rgba(253, 191, 82, 0.5)" },
+        },
+      },
+      width: {
+        600: "37.5rem",
+      },
+      height: {
+        600: "37.5rem",
+      },
+      translate: {
+        296: "18.5rem",
       },
     },
     fontFamily: {
