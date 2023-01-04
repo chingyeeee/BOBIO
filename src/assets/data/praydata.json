@@ -1,5 +1,5 @@
-{
-  "health": {
+[
+  {
     "image": "god_health.png",
     "id": "health",
     "category": "健康",
@@ -15,7 +15,7 @@
       "甜食": "health03.png"
     }
   },
-  "love": {
+  {
     "image": "god_love.png",
     "id": "love",
     "category": "姻緣",
@@ -31,7 +31,7 @@
       "甜食": "love03.png"
     }
   },
-  "safety": {
+  {
     "image": "god_safety.png",
     "id": "safety",
     "category": "平安",
@@ -47,7 +47,7 @@
       "甜食": "safety03.png"
     }
   },
-  "study": {
+  {
     "image": "god_study.png",
     "id": "study",
     "category": "學業",
@@ -63,7 +63,7 @@
       "甜食": "study03.png"
     }
   },
-  "wealth": {
+  {
     "image": "god_wealth.png",
     "id": "wealth",
     "category": "財富",
@@ -79,7 +79,7 @@
       "甜食": "wealth03.png"
     }
   },
-  "work": {
+  {
     "image": "god_work.png",
     "id": "work",
     "category": "事業",
@@ -95,4 +95,4 @@
       "甜食": "work03.png"
     }
   }
-}
+]
