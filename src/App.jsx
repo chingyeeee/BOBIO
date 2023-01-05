@@ -1,9 +1,10 @@
+import { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Nav } from "./assets/components/Nav";
-import { DrawLots } from "./assets/components/pages/DrawLots";
-import { Homepage } from "./assets/components/pages/Homepage";
-import { Pray } from "./assets/components/pages/Pray";
+const Homepage = lazy(() => import("./assets/components/pages/Homepage"));
+const Pray = lazy(() => import("./assets/components/pages/Pray"));
+const DrawLots = lazy(() => import("./assets/components/pages/DrawLots"));
 
 function App() {
   return (
