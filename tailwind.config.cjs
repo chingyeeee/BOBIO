@@ -12,7 +12,6 @@ module.exports = {
         member: "url('/src/assets/images/homepage/total_member.png')",
         donate: "url('/src/assets/images/homepage/total_donate.png')",
         purchase: "url('/src/assets/images/homepage/total_purchase.png')",
-        lots: "url('/src/assets/images/drawLots/lots_container.svg')",
       },
       colors: {
         p1: "#FDBF52",
