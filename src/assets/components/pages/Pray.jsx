@@ -206,7 +206,7 @@ const ChooseCategory = (props) => {
         </Listbox>
       </div>
       <div className="md:mt-5 bg-s2 rounded-full p-4 box-border">
-        <img src={getImageUrl(godImage)} alt={godImage} />
+        <img src={getImageUrl("gods", godImage)} alt={godImage} />
       </div>
       <div className="text-center -mt-6 mb-10 md:mb-0 md:-translate-y-6">
         <p className="text-lg text-p3">掌管神明</p>
@@ -267,7 +267,7 @@ const PrayMethod = (props) => {
         </div>
         <img
           className="drop-shadow-lg w-4/5 mx-auto md:w-2/3 lg:w-2/5"
-          src={getImageUrl(godImage)}
+          src={getImageUrl("gods", godImage)}
         />
       </div>
       <PrayPhraseController nextPhrase={nextPhrase} prevPhrase={prevPhrase} />
@@ -405,10 +405,12 @@ const PrayCard = (props) => {
         </div>
         <img
           className="drop-shadow-lg w-4/5 mx-auto md:w-2/3 lg:w-2/5"
-          src={getImageUrl(cardImage[foodOption])}
+          src={getImageUrl("cards", cardImage[foodOption])}
         />
       </div>
-      <PrayPhraseController nextPhrase={nextPhrase} prevPhrase={prevPhrase} />
+      <div className="w-full flex justify-center lg:justify-end p-3 lg:p-0">
+        <Button text={"返回首頁"} href={"/"} />
+      </div>
     </div>
   );
 };
@@ -420,8 +422,8 @@ export const Pray = () => {
   const [cardImage, setCardImage] = useState({});
   const [foodOption, setFoodOption] = useState("");
 
-  function getImageUrl(path) {
-    return new URL(`../../images/pray/gods/${path}`, import.meta.url).href;
+  function getImageUrl(folder, path) {
+    return new URL(`../../images/pray/${folder}/${path}`, import.meta.url).href;
   }
 
   function prevPhrase() {
