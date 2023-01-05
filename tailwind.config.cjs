@@ -26,6 +26,11 @@ module.exports = {
       },
       boxShadow: {
         lv1: "0 4px 4px rgba(87, 54, 5, 0.25)",
+        ring: "0 0 0 8px rgba(87, 54, 5, 0.25)",
+        active: "0 0 0 8px rgba(253, 191, 82, 0.5)",
+        food: "0 4px 4px rgba(87, 54, 5, 0.25),0 0 0 8px #FDBF52,0 0 8px 8px rgba(253, 191, 82, 0.5)",
+        line: "0 0 0px 1px rgba(253, 191, 82, 0.5)",
+        "inner-circle": "inset 0px 4px 4px rgba(0, 0, 0, 0.25)",
       },
       borderRadius: {
         btn: "1.875rem",
@@ -115,8 +120,8 @@ module.exports = {
           "100%": { transform: "translateY(20px)", opacity: "0" },
         },
         ringing: {
-          "0%": { boxShadow: "0 0 0 0px rgba(253, 191, 82, 0.5)" },
-          "100%": { boxShadow: "0 0 0 8px rgba(253, 191, 82, 0.5)" },
+          "0%": { boxShadow: "0 0 0 8px rgba(253, 191, 82, 0.5)" },
+          "100%": { boxShadow: "0 0 0 0px rgba(253, 191, 82, 0.5)" },
         },
       },
       width: {
@@ -126,7 +131,7 @@ module.exports = {
         600: "37.5rem",
       },
       translate: {
-        296: "18.5rem",
+        290: "18.5rem",
       },
     },
     fontFamily: {
