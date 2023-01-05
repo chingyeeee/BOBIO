@@ -148,7 +148,7 @@ const JoinUs = () => {
   );
 };
 
-export const Homepage = () => {
+const Homepage = () => {
   return (
     <>
       <FullBanner slogan={"用BOBIO就有庇佑"} />
@@ -158,3 +158,5 @@ export const Homepage = () => {
     </>
   );
 };
+
+export default Homepage;
