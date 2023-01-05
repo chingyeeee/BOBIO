@@ -4,7 +4,7 @@ import { FaFacebookF, FaInstagram, FaYoutube } from "react-icons/fa";
 
 export const Footer = () => {
   return (
-    <footer className="bg-s1 p-3 w-full border-b-2 border-p3">
+    <footer className="bg-s1 p-3 w-full border-b-2 border-p3 relative z-10">
       <div className="container flex gap-8 mx-auto items-center justify-between">
         <div className="mx-auto md:m-0 w-auto lg:flex items-center gap-12">
           <img className="w-52 md:w-36" src={Logo} alt="BOBIO" />
