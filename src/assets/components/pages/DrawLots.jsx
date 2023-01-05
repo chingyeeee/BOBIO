@@ -44,6 +44,28 @@ const DrawUserName = ({ nextPhrase, userRef, setUserName }) => {
   );
 };
 
+//drawlots step 2 ------ start throw
+const DrawThrowStart = ({ userName, nextPhrase }) => {
+  return (
+    <div className="lg:flex lg:flex-row-reverse lg:items-center lg:gap-12">
+      <div className="flex flex-col px-3 gap-8 mb-64 lg:mb-0 items-center lg:items-start lg:justify-center lg:gap-8 lg:px-0">
+        <div className="flex flex-col items-center text-center lg:text-left lg:items-start gap-4">
+          <h3 className="text-h2 text-p3">{userName}，請在心中默念想問之事</h3>
+          <p className="text-lg text-s1">
+            誠心的說出心中所煩的事，讓其好好為您解析，人生的挑戰。
+          </p>
+        </div>
+        <Button className="flex-1" text={"開始擲筊"} handleClick={nextPhrase} />
+      </div>
+      <img
+        className="absolute inset-x-0 mx-auto -bottom-24 z-0 lg:static"
+        src={LotsContainer}
+        alt="lotscontainer"
+      />
+    </div>
+  );
+};
+
 const DrawLots = () => {
   const [drawPhrase, setdrawPhrase] = useState(0);
   const userRef = useRef();
@@ -61,6 +83,9 @@ const DrawLots = () => {
           userRef={userRef}
           setUserName={setUserName}
         />
+      )}
+      {drawPhrase === 1 && (
+        <DrawThrowStart nextPhrase={nextPhrase} userName={userName} />
       )}
     </div>
   );
