@@ -415,7 +415,7 @@ const PrayCard = (props) => {
   );
 };
 
-export const Pray = () => {
+const Pray = () => {
   const [godImage, setGodImage] = useState(null);
   const [prayPhrase, setPrayPhrase] = useState(0);
   const [foodset, setFoodSet] = useState({});
@@ -480,3 +480,5 @@ export const Pray = () => {
     </div>
   );
 };
+
+export default Pray;
