@@ -112,6 +112,7 @@ module.exports = {
       animation: {
         "scroll-down": "scroll-down 1.5s linear infinite",
         ringing: "ringing 1s linear infinite alternate",
+        "scale-all": "scale-all 0.5s linear infinite alternate",
       },
       keyframes: {
         "scroll-down": {
@@ -122,6 +123,10 @@ module.exports = {
         ringing: {
           "0%": { boxShadow: "0 0 0 8px rgba(253, 191, 82, 0.5)" },
           "100%": { boxShadow: "0 0 0 0px rgba(253, 191, 82, 0.5)" },
+        },
+        "scale-all": {
+          "0%": { transform: "scale(.85)" },
+          "100%": { transform: "scale(1.25)" },
         },
       },
       width: {
