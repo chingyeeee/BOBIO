@@ -14,6 +14,7 @@ import { GiHealing } from "react-icons/gi";
 import { RiMoneyDollarCircleFill } from "react-icons/ri";
 import { MdWork } from "react-icons/md";
 import PrayGIF from "../../images/pray/bobio-animation.gif";
+import { getImageUrl } from "../utils/getImageUrl";
 
 // steps
 const Steps = ({ text, active, className = "" }) => {
@@ -116,14 +117,7 @@ const Attributes = ({ set, setFoodOption, nextPhrase }) => {
 
 // Select Pray God
 const ChooseCategory = (props) => {
-  const {
-    godImage,
-    setGodImage,
-    nextPhrase,
-    getImageUrl,
-    setCardImage,
-    setFoodSet,
-  } = props;
+  const { godImage, setGodImage, nextPhrase, setCardImage, setFoodSet } = props;
   const [option, setOption] = useState("祈願種類");
   const [godName, setGodName] = useState("未知");
 
@@ -206,7 +200,7 @@ const ChooseCategory = (props) => {
         </Listbox>
       </div>
       <div className="md:mt-5 bg-s2 rounded-full p-4 box-border">
-        <img src={getImageUrl("gods", godImage)} alt={godImage} />
+        <img src={getImageUrl("pray/gods", godImage)} alt={godImage} />
       </div>
       <div className="text-center -mt-6 mb-10 md:mb-0 md:-translate-y-6">
         <p className="text-lg text-p3">掌管神明</p>
@@ -237,7 +231,7 @@ const ChooseCategory = (props) => {
 
 // Pray Step 2
 const PrayMethod = (props) => {
-  const { godImage, nextPhrase, getImageUrl, prevPhrase } = props;
+  const { godImage, nextPhrase, prevPhrase } = props;
 
   return (
     <div className="container mx-auto flex flex-col items-center justify-center h-full text-center gap-8 lg:text-left lg:gap-16  py-6">
@@ -267,7 +261,7 @@ const PrayMethod = (props) => {
         </div>
         <img
           className="drop-shadow-lg w-4/5 mx-auto md:w-2/3 lg:w-2/5"
-          src={getImageUrl("gods", godImage)}
+          src={getImageUrl("pray/gods", godImage)}
         />
       </div>
       <PrayPhraseController nextPhrase={nextPhrase} prevPhrase={prevPhrase} />
@@ -371,7 +365,7 @@ const PrayStart = (props) => {
 
 // Pray Step 5
 const PrayCard = (props) => {
-  const { nextPhrase, prevPhrase, cardImage, foodOption, getImageUrl } = props;
+  const { nextPhrase, prevPhrase, cardImage, foodOption } = props;
 
   return (
     <div className="container mx-auto flex flex-col items-center justify-center h-full text-center gap-16 lg:text-left py-6">
@@ -405,7 +399,7 @@ const PrayCard = (props) => {
         </div>
         <img
           className="drop-shadow-lg w-4/5 mx-auto md:w-2/3 lg:w-2/5"
-          src={getImageUrl("cards", cardImage[foodOption])}
+          src={getImageUrl("pray/cards", cardImage[foodOption])}
         />
       </div>
       <div className="w-full flex justify-center lg:justify-end p-3 lg:p-0">
@@ -421,10 +415,6 @@ const Pray = () => {
   const [foodset, setFoodSet] = useState({});
   const [cardImage, setCardImage] = useState({});
   const [foodOption, setFoodOption] = useState("");
-
-  function getImageUrl(folder, path) {
-    return new URL(`../../images/pray/${folder}/${path}`, import.meta.url).href;
-  }
 
   function prevPhrase() {
     setPrayPhrase(prayPhrase - 1);
@@ -442,7 +432,6 @@ const Pray = () => {
           godImage={godImage}
           setGodImage={setGodImage}
           nextPhrase={nextPhrase}
-          getImageUrl={getImageUrl}
           setFoodSet={setFoodSet}
           setCardImage={setCardImage}
         />
@@ -452,7 +441,6 @@ const Pray = () => {
           godImage={godImage}
           prevPhrase={prevPhrase}
           nextPhrase={nextPhrase}
-          getImageUrl={getImageUrl}
           prayPhrase={prayPhrase}
         />
       )}
@@ -474,7 +462,6 @@ const Pray = () => {
           nextPhrase={nextPhrase}
           foodOption={foodOption}
           cardImage={cardImage}
-          getImageUrl={getImageUrl}
         />
       )}
     </div>
