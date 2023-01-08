@@ -113,6 +113,9 @@ module.exports = {
         "scroll-down": "scroll-down 1.5s linear infinite",
         ringing: "ringing 1s linear infinite alternate",
         "scale-all": "scale-all 0.5s linear infinite alternate",
+        "shake-lots-web": "shakeLotsWeb 0.5s linear infinite alternate",
+        "shake-lots-mobile": "shakeLotsMobile 0.5s linear infinite alternate",
+        "get-pome": "getPome 0.5s linear",
       },
       keyframes: {
         "scroll-down": {
@@ -127,6 +130,18 @@ module.exports = {
         "scale-all": {
           "0%": { transform: "scale(.85)" },
           "100%": { transform: "scale(1.25)" },
+        },
+        shakeLotsWeb: {
+          "0%": { transform: "rotate(-15deg) scale(1.25) translateY(2rem)" },
+          "100%": { transform: "rotate(15deg) scale(1.25) translateY(2rem)" },
+        },
+        shakeLotsMobile: {
+          "0%": { transform: "rotate(-5deg)" },
+          "100%": { transform: "rotate(5deg)" },
+        },
+        getPome: {
+          "0%": { left: "0", top: "5rem", right: "1.25rem" },
+          "100%": { left: "0", top: "0", right: "0" },
         },
       },
       width: {
