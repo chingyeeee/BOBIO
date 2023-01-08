@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
 import LotsContainer from "../../images/drawLots/lots_container.svg";
+import LotsOnly from "../../images/drawLots/lots_container_lots.svg";
+import Lots from "../../images/drawLots/lots_container_drawlots.svg";
+import ContainerSurface from "../../images/drawLots/lots_container_surface.svg";
 import { Button } from "../common/Button";
-import Trail from "../../images/drawLots/trial.svg";
-import Success from "../../images/drawLots/result_success.svg";
-import FailOne from "../../images/drawLots/result_fail_01.svg";
-import FailTwo from "../../images/drawLots/result_fail_02.svg";
+import { getImageUrl } from "../utils/getImageUrl";
 
 //drawlots step 1 ------ get user name
 const DrawUserName = ({ nextPhrase, userRef, setUserName }) => {
@@ -41,58 +41,237 @@ const DrawUserName = ({ nextPhrase, userRef, setUserName }) => {
   );
 };
 
-//drawlots step 2 ------ start throw
-const DrawThrowStart = ({ userName, nextPhrase }) => {
-  const [result, setResult] = useState(0);
+//drawlots step 2 ------ get pome
+const DrawThrowStart = ({ userName, nextPhrase, setPomesNumber }) => {
+  const [currentResult, setCurrentResult] = useState(0);
 
   //點擊擲筊
   function generateThrowResult() {
-    setResult(Math.floor(Math.random() * 3) + 1);
-  }
+    //random render 1 - 3
+    const result = Math.floor(Math.random() * 3) + 1;
+    // const result = 1;
 
-  //根據擲筊結果顯示圖片
-  function showThrowResult() {
-    if (result === 1) {
-      return Success;
-    } else if (result === 2) {
-      return FailOne;
-    } else if (result === 3) {
-      return FailTwo;
-    } else {
-      return Trail;
+    //把result存到currentResult裡
+    setCurrentResult(result);
+
+    //render 對應的 image
+    showThrowResult(result);
+
+    if (currentResult === 1) {
+      const pomeNo = Math.floor(Math.random() * 52 + 1);
+
+      setPomesNumber(pomeNo);
+
+      nextPhrase();
     }
   }
 
-  console.log(showThrowResult());
+  //reset所有result
+  function regenerateThrowResult() {
+    //把result set成0
+    setCurrentResult(0);
+  }
+
+  //根據擲筊結果顯示圖片
+  function showThrowResult(result = 0) {
+    if (result === 1) {
+      return "result_success.svg";
+    } else if (result === 2) {
+      return "result_fail_01.svg";
+    } else if (result === 3) {
+      return "result_fail_02.svg";
+    } else {
+      return "trial.svg";
+    }
+  }
+
+  //根據擲筊結果顯示文字
+  function showThrowResultText(result = 0) {
+    if (result === 1) {
+      return "聖筊";
+    } else if (result === 2) {
+      return "笑筊";
+    } else if (result === 3) {
+      return "陰筊";
+    } else {
+      return "";
+    }
+  }
 
   return (
     <div className="flex flex-col px-3 gap-8 mb-64 lg:mb-0 items-center lg:items-start lg:justify-center lg:gap-8 lg:px-0 lg:w-1/2 pr-4 relative z-10">
       <div className="flex flex-col items-center text-center lg:text-left lg:items-start gap-4 ">
-        <h3 className="text-h2 text-p3">{userName}，請在心中默念想問之事</h3>
+        <h3 className="text-h2 text-p3">
+          {currentResult === 0
+            ? `${userName}，請您帶著誠心，請示神明是否賜籤`
+            : currentResult === 1
+            ? `恭喜${userName}，可以前往求籤`
+            : `哎呀！神明好像沒聽清楚您的問題`}
+        </h3>
         <p className="text-lg text-s1">
-          擲筊請示神明是否應允賜籤，若獲得聖筊即可去抽籤。
+          {currentResult === 0
+            ? "擲筊請示神明是否應允賜籤，若獲得聖筊即可抽籤。"
+            : currentResult === 1
+            ? "請繼續在心中默念想問之事"
+            : `${userName}，請重新整理問題，請示神明是否賜籤。`}
         </p>
       </div>
-      <div className="flex flex-col gap-6 lg:gap-8 items-center">
+      <div className="flex flex-col gap-6 lg:gap-8 items-center lg:items-start">
         <div className="flex gap-4">
-          <img
-            className={`${result === 0 && "animate-scale-all"} `}
-            src={showThrowResult}
-            alt="drawLotsTrail"
+          <div className="flex flex-col items-center">
+            <img
+              className={currentResult === 0 ? "animate-scale-all" : ""}
+              src={getImageUrl("drawLots", showThrowResult(currentResult))}
+              alt="drawlotstrail"
+            />
+            <p className="text-s1 text-caption">
+              {showThrowResultText(currentResult)}
+            </p>
+          </div>
+        </div>
+        {currentResult === 0 || currentResult === 1 ? (
+          <Button
+            className="flex-1"
+            text={currentResult === 1 ? "開始抽籤" : "開始擲筊"}
+            handleClick={generateThrowResult}
           />
-          {result === 1 && (
+        ) : (
+          <Button
+            className="flex-1"
+            text={"重新擲筊"}
+            handleClick={regenerateThrowResult}
+          />
+        )}
+      </div>
+    </div>
+  );
+};
+
+//drawlots step 3 ------ get pome
+const DrawGetPome = ({
+  userName,
+  nextPhrase,
+  pomesNumber,
+  setPomesNumber,
+  setTrails,
+  trails,
+}) => {
+  const [currentResult, setCurrentResult] = useState(0);
+
+  //點擊擲筊
+  function generateThrowResult() {
+    //random render 1 - 3
+    const result = Math.floor(Math.random() * 3) + 1;
+    // const result = 1;
+
+    //把result存到currentResult裡
+    setCurrentResult(result);
+
+    //render 對應的 image
+    showThrowResult(result);
+
+    //把當前result存到array裡
+    setTrails([...trails, result]);
+
+    if (trails.length === 3 && trails.slice().pop() === 1) nextPhrase();
+  }
+
+  //reset所有result
+  function regenerateThrowResult() {
+    //把array清空
+    setTrails([]);
+
+    //把result set成0
+    setCurrentResult(0);
+
+    const pomeNo = Math.floor(Math.random() * 52 + 1);
+
+    setPomesNumber(pomeNo);
+  }
+
+  //根據擲筊結果顯示圖片
+  function showThrowResult(result = 0) {
+    if (result === 1) {
+      return "result_success.svg";
+    } else if (result === 2) {
+      return "result_fail_01.svg";
+    } else if (result === 3) {
+      return "result_fail_02.svg";
+    } else {
+      return "trial.svg";
+    }
+  }
+
+  //根據擲筊結果顯示文字
+  function showThrowResultText(result = 0) {
+    if (result === 1) {
+      return "聖筊";
+    } else if (result === 2) {
+      return "笑筊";
+    } else if (result === 3) {
+      return "陰筊";
+    } else {
+      return "";
+    }
+  }
+
+  return (
+    <div className="flex flex-col px-3 gap-8 mb-64 lg:mb-0 items-center lg:items-start lg:justify-center lg:gap-8 lg:px-0 lg:w-1/2 pr-4 relative z-10">
+      <div className="flex flex-col items-center text-center lg:text-left lg:items-start gap-4 ">
+        <h3 className="text-h2 text-p3">
+          {trails.length === 0 || currentResult === 1
+            ? trails.length === 3 && trails.slice().pop() === 1
+              ? `${userName}，您可以查看第${pomesNumber}號籤詩`
+              : `${userName}，您抽到第${pomesNumber}號籤`
+            : `哎呀，這不是您的籤，請您重新抽籤`}
+        </h3>
+        <p className="text-lg text-s1">
+          {trails.length === 0 || currentResult === 1
+            ? "請誠心詢問擲出三個聖筊，向神明確定籤意。"
+            : `${userName}，請在心中默念想問之事。`}
+        </p>
+      </div>
+      <div className="flex flex-col gap-6 lg:gap-8 items-center lg:items-start">
+        <div className="flex gap-4">
+          {trails.map((trail, i) => {
+            return (
+              <div key={i} className="flex flex-col items-center">
+                <img
+                  src={getImageUrl("drawLots", showThrowResult(trail))}
+                  alt="drawlotstrail"
+                />
+                <p className="text-s1 text-caption">
+                  {showThrowResultText(trail)}
+                </p>
+              </div>
+            );
+          })}
+          {(trails.length === 0 ||
+            (currentResult === 1 && trails.length < 3)) && (
             <img
               className="animate-scale-all"
-              src={Trail}
-              alt="drawLotsTrail"
+              src={getImageUrl("drawLots", showThrowResult())}
+              alt="drawlotstrail"
             />
           )}
         </div>
-        <Button
-          className="flex-1"
-          text={"開始擲筊"}
-          handleClick={generateThrowResult}
-        />
+        {trails.length === 0 || currentResult === 1 ? (
+          <Button
+            className="flex-1"
+            text={
+              trails.length === 3 && trails.slice().pop() === 1
+                ? "查看籤詩"
+                : "開始擲筊"
+            }
+            handleClick={generateThrowResult}
+          />
+        ) : (
+          <Button
+            className="flex-1"
+            text={"重新擲筊"}
+            handleClick={regenerateThrowResult}
+          />
+        )}
       </div>
     </div>
   );
@@ -102,6 +281,8 @@ const DrawLots = () => {
   const [drawPhrase, setdrawPhrase] = useState(0);
   const userRef = useRef();
   const [userName, setUserName] = useState(null);
+  const [pomesNumber, setPomesNumber] = useState(0);
+  const [trails, setTrails] = useState([]);
 
   function nextPhrase() {
     setdrawPhrase(drawPhrase + 1);
@@ -118,16 +299,51 @@ const DrawLots = () => {
           />
         )}
         {drawPhrase === 1 && (
-          <DrawThrowStart nextPhrase={nextPhrase} userName={userName} />
+          <DrawThrowStart
+            nextPhrase={nextPhrase}
+            userName={userName}
+            setPomesNumber={setPomesNumber}
+          />
         )}
         {drawPhrase === 2 && (
-          <DrawThrowTrail nextPhrase={nextPhrase} userName={userName} />
+          <DrawGetPome
+            nextPhrase={nextPhrase}
+            userName={userName}
+            pomesNumber={pomesNumber}
+            setPomesNumber={setPomesNumber}
+            trails={trails}
+            setTrails={setTrails}
+          />
         )}
-        <img
-          className="drop-shadow-md absolute inset-x-0 mx-auto -bottom-24 z-0 lg:static lg:scale-125 lg:translate-y-12"
-          src={LotsContainer}
-          alt="lotscontainer"
-        />
+
+        {drawPhrase === 2 ? (
+          <div
+            className={`drop-shadow-md absolute inset-x-0 mx-auto -bottom-24 z-0 lg:static lg:scale-125 `}
+          >
+            <img className="mx-auto" src={Lots} alt="lotscontainer" />
+            <img
+              className="inset-x-0 mx-auto absolute bottom-0 z-10"
+              src={ContainerSurface}
+              alt="lotscontainer"
+            />
+            <img
+              className={`left-0 right-0 mx-auto absolute top-0 z-0  ${
+                trails.length === 0 && "animate-get-pome"
+              }`}
+              src={LotsOnly}
+              alt="lotscontainer"
+            />
+          </div>
+        ) : (
+          <img
+            className={`drop-shadow-md absolute inset-x-0 mx-auto -bottom-24 z-0 lg:static lg:scale-125 lg:translate-y-12 ${
+              drawPhrase === 1 &&
+              "lg:animate-shake-lots-web animate-shake-lots-mobile"
+            }`}
+            src={LotsContainer}
+            alt="lotscontainer"
+          />
+        )}
       </div>
     </div>
   );
