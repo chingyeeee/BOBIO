@@ -5,6 +5,7 @@ import { Nav } from "./assets/components/Nav";
 const Homepage = lazy(() => import("./assets/components/pages/Homepage"));
 const Pray = lazy(() => import("./assets/components/pages/Pray"));
 const DrawLots = lazy(() => import("./assets/components/pages/DrawLots"));
+const DonateMoney = lazy(() => import("./assets/components/pages/DonateMoney"));
 
 function App() {
   return (
@@ -14,7 +15,8 @@ function App() {
           <Route path="/" element={<Nav />}>
             <Route path="/" index element={<Homepage />} />
             <Route path="/pray" element={<Pray />} />
-            <Route path="/drawlots" element={<DrawLots />} />
+            <Route path="/draw-lots" element={<DrawLots />} />
+            <Route path="/donate-money" element={<DonateMoney />} />
           </Route>
         </Routes>
       </BrowserRouter>

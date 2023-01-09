@@ -26,13 +26,13 @@ export const NavBar = () => {
             <NavLink color="text-p3" text="立即祈願" href={"/pray"} />
           </li>
           <li>
-            <NavLink color="text-p3" text="線上求籤" href={"/drawlots"} />
+            <NavLink color="text-p3" text="線上求籤" href={"/draw-lots"} />
           </li>
           <li>
             <NavLink color="text-p3" text="平安符願" />
           </li>
           <li>
-            <NavLink color="text-p3" text="添香結緣" />
+            <NavLink color="text-p3" text="添香結緣" href={"/donate-money"} />
           </li>
         </ul>
         <Link to={"#"}>
