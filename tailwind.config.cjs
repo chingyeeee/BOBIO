@@ -116,6 +116,7 @@ module.exports = {
         "shake-lots-web": "shakeLotsWeb 0.5s linear infinite alternate",
         "shake-lots-mobile": "shakeLotsMobile 0.5s linear infinite alternate",
         "get-pome": "getPome 0.5s linear",
+        "fadein-number": "1.8s ease-in fadeInNumber",
       },
       keyframes: {
         "scroll-down": {
@@ -142,6 +143,10 @@ module.exports = {
         getPome: {
           "0%": { left: "0", top: "5rem", right: "1.25rem" },
           "100%": { left: "0", top: "0", right: "0" },
+        },
+        fadeInNumber: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
         },
       },
       width: {

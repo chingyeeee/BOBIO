@@ -48,8 +48,8 @@ const DrawThrowStart = ({ userName, nextPhrase, setPomesNumber }) => {
   //點擊擲筊
   function generateThrowResult() {
     //random render 1 - 3
-    const result = Math.floor(Math.random() * 3) + 1;
-    // const result = 1;
+    // const result = Math.floor(Math.random() * 3) + 1;
+    const result = 1;
 
     //把result存到currentResult裡
     setCurrentResult(result);
@@ -161,8 +161,8 @@ const DrawGetPome = ({
   //點擊擲筊
   function generateThrowResult() {
     //random render 1 - 3
-    const result = Math.floor(Math.random() * 3) + 1;
-    // const result = 1;
+    // const result = Math.floor(Math.random() * 3) + 1;
+    const result = 1;
 
     //把result存到currentResult裡
     setCurrentResult(result);
@@ -184,7 +184,7 @@ const DrawGetPome = ({
     //把result set成0
     setCurrentResult(0);
 
-    const pomeNo = Math.floor(Math.random() * 52 + 1);
+    const pomeNo = Math.floor(Math.random() * 60 + 1);
 
     setPomesNumber(pomeNo);
   }
@@ -249,7 +249,7 @@ const DrawGetPome = ({
           {(trails.length === 0 ||
             (currentResult === 1 && trails.length < 3)) && (
             <img
-              className="animate-scale-all"
+              className="animate-scale-all relative z-20"
               src={getImageUrl("drawLots", showThrowResult())}
               alt="drawlotstrail"
             />
@@ -333,6 +333,13 @@ const DrawLots = () => {
               src={LotsOnly}
               alt="lotscontainer"
             />
+            <span
+              className={`absolute top-[45%] left-[57%] z-10 rotate-[8deg] text-p3 ${
+                trails.length === 0 && "animate-fadein-number"
+              }`}
+            >
+              {pomesNumber}
+            </span>
           </div>
         ) : (
           <img
