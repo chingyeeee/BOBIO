@@ -19,13 +19,21 @@ export const Footer = () => {
               <FooLink text={"立即祈願"} color={"text-n1"} href={"/pray"} />
             </li>
             <li>
-              <FooLink text={"線上求籤"} color={"text-n1"} />
+              <FooLink
+                text={"線上求籤"}
+                color={"text-n1"}
+                href={"/draw-lots"}
+              />
             </li>
             <li>
               <FooLink text={"平安符願"} color={"text-n1"} />
             </li>
             <li>
-              <FooLink text={"添香結緣"} color={"text-n1"} />
+              <FooLink
+                text={"添香結緣"}
+                color={"text-n1"}
+                href={"/donate-money"}
+              />
             </li>
           </ul>
           <div className="flex flex-col md:flex-row justify-between border-b border-n1 py-4 gap-6 md:items-end">
