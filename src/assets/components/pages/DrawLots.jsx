@@ -277,6 +277,32 @@ const DrawGetPome = ({
   );
 };
 
+//drawlots step 4 ------ show pome image
+const ShowPome = ({ pomesNumber }) => {
+  const imageUrl = `pome_${pomesNumber}.svg`;
+
+  //儲存籤詩
+  function savePome() {
+    console.log(getImageUrl("drawLots/pomes", imageUrl));
+  }
+
+  return (
+    <div className="flex flex-col px-3 gap-8 lg:mb-0 items-center lg:items-start lg:justify-center lg:gap-8 lg:px-0 lg:w-1/2 pr-4 relative z-10">
+      <div className="flex flex-col items-center text-center lg:text-left lg:items-start gap-8 ">
+        <h3 className="text-h2 text-p3">您的第{pomesNumber}號籤詩</h3>
+        <img
+          src={getImageUrl("drawLots/pomes", imageUrl)}
+          alt="drawlotstrail"
+        />
+      </div>
+      <div className="flex gap-6 items-center ">
+        <Button className="flex-1" text={"儲存籤詩"} handleClick={savePome} />
+        <Button className="flex-1" text={"返回首頁"} href={"/"} />
+      </div>
+    </div>
+  );
+};
+
 const DrawLots = () => {
   const [drawPhrase, setdrawPhrase] = useState(0);
   const userRef = useRef();
@@ -315,10 +341,11 @@ const DrawLots = () => {
             setTrails={setTrails}
           />
         )}
+        {drawPhrase === 3 && <ShowPome pomesNumber={pomesNumber} />}
 
-        {drawPhrase === 2 ? (
+        {drawPhrase === 2 || drawPhrase === 3 ? (
           <div
-            className={`drop-shadow-md absolute inset-x-0 mx-auto -bottom-24 z-0 lg:static lg:scale-125 `}
+            className={`drop-shadow-md absolute inset-x-0 mx-auto -bottom-24 z-0 lg:static lg:scale-125 hidden lg:block`}
           >
             <img className="mx-auto" src={Lots} alt="lotscontainer" />
             <img
@@ -328,14 +355,16 @@ const DrawLots = () => {
             />
             <img
               className={`left-0 right-0 mx-auto absolute top-0 z-0  ${
-                trails.length === 0 && "animate-get-pome"
+                trails.length === 0 && drawPhrase === 2 && "animate-get-pome"
               }`}
               src={LotsOnly}
               alt="lotscontainer"
             />
             <span
-              className={`absolute top-[45%] left-[57%] z-10 rotate-[8deg] text-p3 ${
-                trails.length === 0 && "animate-fadein-number"
+              className={`absolute top-[45%] left-[57%] lg:left-[59%] z-10 rotate-[8deg] text-p3 ${
+                trails.length === 0 &&
+                drawPhrase === 2 &&
+                "animate-fadein-number"
               }`}
             >
               {pomesNumber}
@@ -346,7 +375,7 @@ const DrawLots = () => {
             className={`drop-shadow-md absolute inset-x-0 mx-auto -bottom-24 z-0 lg:static lg:scale-125 lg:translate-y-12 ${
               drawPhrase === 1 &&
               "lg:animate-shake-lots-web animate-shake-lots-mobile"
-            }`}
+            } ${drawPhrase === 3 && "hidden"}`}
             src={LotsContainer}
             alt="lotscontainer"
           />
