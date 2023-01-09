@@ -48,8 +48,8 @@ const DrawThrowStart = ({ userName, nextPhrase, setPomesNumber }) => {
   //點擊擲筊
   function generateThrowResult() {
     //random render 1 - 3
-    // const result = Math.floor(Math.random() * 3) + 1;
-    const result = 1;
+    const result = Math.floor(Math.random() * 3) + 1;
+    // const result = 1;
 
     //把result存到currentResult裡
     setCurrentResult(result);
@@ -279,24 +279,26 @@ const DrawGetPome = ({
 
 //drawlots step 4 ------ show pome image
 const ShowPome = ({ pomesNumber }) => {
-  const imageUrl = `pome_${pomesNumber}.svg`;
-
-  //儲存籤詩
-  function savePome() {
-    console.log(getImageUrl("drawLots/pomes", imageUrl));
-  }
+  const imageName = `pome_${pomesNumber}.jpg`;
 
   return (
     <div className="flex flex-col px-3 gap-8 lg:mb-0 items-center lg:items-start lg:justify-center lg:gap-8 lg:px-0 lg:w-1/2 pr-4 relative z-10">
       <div className="flex flex-col items-center text-center lg:text-left lg:items-start gap-8 ">
         <h3 className="text-h2 text-p3">您的第{pomesNumber}號籤詩</h3>
         <img
-          src={getImageUrl("drawLots/pomes", imageUrl)}
+          className="lg:max-w-[80%]"
+          src={getImageUrl("drawLots/pomes", imageName)}
           alt="drawlotstrail"
         />
       </div>
       <div className="flex gap-6 items-center ">
-        <Button className="flex-1" text={"儲存籤詩"} handleClick={savePome} />
+        <a
+          className="bg-p1 px-5 w-max py-2 text-normal md:text-lg text-p3 hover:text-n1 flex items-center gap-3 rounded-btn shadow-lv1 flex-1"
+          href={getImageUrl("drawLots/pomes", imageName)}
+          download={`第${pomesNumber}號籤詩`}
+        >
+          儲存籤詩
+        </a>
         <Button className="flex-1" text={"返回首頁"} href={"/"} />
       </div>
     </div>
@@ -345,7 +347,9 @@ const DrawLots = () => {
 
         {drawPhrase === 2 || drawPhrase === 3 ? (
           <div
-            className={`drop-shadow-md absolute inset-x-0 mx-auto -bottom-24 z-0 lg:static lg:scale-125 hidden lg:block`}
+            className={`drop-shadow-md absolute inset-x-0 mx-auto -bottom-24 z-0 lg:static lg:scale-125 ${
+              drawPhrase === 3 && "hidden lg:block"
+            }`}
           >
             <img className="mx-auto" src={Lots} alt="lotscontainer" />
             <img
@@ -361,7 +365,11 @@ const DrawLots = () => {
               alt="lotscontainer"
             />
             <span
-              className={`absolute top-[45%] left-[57%] lg:left-[59%] z-10 rotate-[8deg] text-p3 ${
+              className={`absolute top-[45%]  ${
+                pomesNumber > 9
+                  ? "left-[57%] lg:left-[59.5%]"
+                  : "left-[58.5%] lg:left-[61%]"
+              } z-10 rotate-[8deg] text-p3 ${
                 trails.length === 0 &&
                 drawPhrase === 2 &&
                 "animate-fadein-number"
