@@ -6,19 +6,107 @@ import MoneyBox from "../../images/donateMoney/moneybox.gif";
 import MoneyBoxAnimation from "../../images/donateMoney/movemoneybox.gif";
 import { Button } from "../common/Button";
 
-const DonateModal = ({ showModal, setShowModal }) => {
+const GetDonateAmount = ({
+  moneyRef,
+  closeModal,
+  setMoney,
+  setEnterCreditCard,
+}) => {
+  //save money
+  function saveMoney() {
+    if (Number(moneyRef.current.value) <= 0) return;
+    setMoney(Number(moneyRef.current.value));
+    setEnterCreditCard(true);
+  }
+
+  return (
+    <div className="flex flex-col items-center gap-8">
+      <Dialog.Title as="h3" className="text-lg text-p3">
+        請輸入您欲結緣金額
+      </Dialog.Title>
+      <div className="flex items-center">
+        <div className="md:w-1/3">
+          <label
+            className="block text-caption text-s1 flex-1 md:flex-auto"
+            htmlFor="money"
+          >
+            結緣金額：
+          </label>
+        </div>
+        <div className="md:w-2/3">
+          <input
+            className="px-3 py-1.5 text-base text-s1 bg-p2 bg-clip-padding border border-solid border-s1 rounded-xl transition ease-in-out m-0 focus:text-p3 focus:bg-p2 focus:border-p1 focus:outline-none lg:py-2 lg:px-4"
+            id="money"
+            type="number"
+            placeholder="1000"
+            ref={moneyRef}
+          />
+        </div>
+      </div>
+      <div className="flex gap-4">
+        <Button text={"取消"} handleClick={closeModal} />
+        <Button text={"結緣"} handleClick={saveMoney} />
+      </div>
+    </div>
+  );
+};
+
+const StartPayment = ({
+  money,
+  setEnterCreditCard,
+  setShowThankyou,
+  setShowModal,
+}) => {
+  function reEnterDonateAmount() {
+    setEnterCreditCard(false);
+  }
+
+  function handleDonate() {
+    // setShowThankyou(true)
+    // setShowModal(false)
+  }
+
+  return (
+    <div className="flex flex-col items-center gap-8">
+      <Dialog.Title as="h3" className="text-lg text-p3">
+        信用卡付款
+      </Dialog.Title>
+      <div className="flex items-center">
+        <div className="md:w-1/3">
+          <label
+            className="block text-caption text-s1 flex-1 md:flex-auto"
+            htmlFor="money"
+          >
+            結緣金額：
+          </label>
+        </div>
+        <div className="md:w-2/3">
+          {/* <input
+            className="px-3 py-1.5 text-base text-s1 bg-p2 bg-clip-padding border border-solid border-s1 rounded-xl transition ease-in-out m-0 focus:text-p3 focus:bg-p2 focus:border-p1 focus:outline-none lg:py-2 lg:px-4"
+            id="money"
+            type="number"
+            placeholder="1000"
+            ref={moneyRef}
+          /> */}
+          <p>NT${money}</p>
+        </div>
+      </div>
+      <div className="flex gap-4">
+        <Button text={"返回"} handleClick={reEnterDonateAmount} />
+        <Button text={"結緣"} handleClick={handleDonate} />
+      </div>
+    </div>
+  );
+};
+
+const DonateModal = ({ showModal, setShowModal, setShowThankyou }) => {
   const [money, setMoney] = useState(null);
+  const [enterCreditCard, setEnterCreditCard] = useState(false);
   const moneyRef = useRef();
 
   //close modal
   function closeModal() {
     setShowModal(false);
-  }
-
-  //save money
-  function saveMoney() {
-    if (Number(moneyRef.current.value) <= 0) return;
-    setMoney(Number(moneyRef.current.value));
   }
 
   return (
@@ -49,33 +137,22 @@ const DonateModal = ({ showModal, setShowModal }) => {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform -translate-y-8 overflow-hidden rounded-xl bg-n1 p-6 shadow-lv1 transition-all flex flex-col items-center gap-8">
-                <Dialog.Title as="h3" className="text-lg text-p3">
-                  請輸入您欲結緣金額
-                </Dialog.Title>
-                <div className="flex items-center">
-                  <div className="md:w-1/3">
-                    <label
-                      className="block text-caption text-s1 flex-1 md:flex-auto"
-                      htmlFor="money"
-                    >
-                      結緣金額：
-                    </label>
-                  </div>
-                  <div className="md:w-2/3">
-                    <input
-                      className="px-3 py-1.5 text-base text-s1 bg-white bg-clip-padding border border-solid border-s1 rounded-xl transition ease-in-out m-0 focus:text-p3 focus:bg-white focus:border-p1 focus:outline-none lg:py-2 lg:px-4"
-                      id="money"
-                      type="number"
-                      placeholder="1000"
-                      ref={moneyRef}
-                    />
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <Button text={"取消"} handleClick={closeModal} />
-                  <Button text={"結緣"} handleClick={saveMoney} />
-                </div>
+              <Dialog.Panel className="w-full max-w-md transform -translate-y-8 overflow-hidden rounded-xl bg-n1 p-6 shadow-lv1 transition-all">
+                {enterCreditCard ? (
+                  <StartPayment
+                    money={money}
+                    setShowModal={setShowModal}
+                    setShowThankyou={setShowThankyou}
+                    setEnterCreditCard={setEnterCreditCard}
+                  />
+                ) : (
+                  <GetDonateAmount
+                    setMoney={setMoney}
+                    closeModal={closeModal}
+                    moneyRef={moneyRef}
+                    setEnterCreditCard={setEnterCreditCard}
+                  />
+                )}
               </Dialog.Panel>
             </Transition.Child>
           </div>
@@ -121,7 +198,11 @@ const DonateMoney = ({}) => {
       </div>
       {/* 結緣彈窗 */}
       {showModal && (
-        <DonateModal setShowModal={setShowModal} showModal={showModal} />
+        <DonateModal
+          setShowModal={setShowModal}
+          showModal={showModal}
+          setShowThankyou={setShowThankyou}
+        />
       )}
     </div>
   );
