@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import praydata from "../../data/praydata.json";
+import praydata from "../../data/goddata.json";
 import {
   BsCaretDownFill,
   BsCheck,
