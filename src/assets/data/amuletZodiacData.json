@@ -1,0 +1,14 @@
+[
+  { "id": "rat", "name": "鼠", "background": "amulet01.jpg" },
+  { "id": "ox", "name": "牛", "background": "amulet02.jpg" },
+  { "id": "tiger", "name": "虎", "background": "amulet03.jpg" },
+  { "id": "rabbit", "name": "兔", "background": "amulet04.jpg" },
+  { "id": "dragon", "name": "龍", "background": "amulet05.jpg" },
+  { "id": "snake", "name": "蛇", "background": "amulet06.jpg" },
+  { "id": "horse", "name": "馬", "background": "amulet07.jpg" },
+  { "id": "goat", "name": "羊", "background": "amulet08.jpg" },
+  { "id": "monkey", "name": "猴", "background": "amulet09.jpg" },
+  { "id": "rooster", "name": "雞", "background": "amulet10.jpg" },
+  { "id": "dog", "name": "狗", "background": "amulet11.jpg" },
+  { "id": "pig", "name": "豬", "background": "amulet12.jpg" }
+]
