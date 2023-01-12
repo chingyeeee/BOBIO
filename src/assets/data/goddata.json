@@ -14,7 +14,8 @@
       "鮮果": "health02.svg",
       "甜食": "health03.svg"
     },
-    "icon": "GiHealing"
+    "icon": "GiHealing",
+    "about": "主掌醫藥的神祇，精通天文地理，醫術高超，專門醫療惡疾、救人無數，是祈求身體健康的神祇。"
   },
   {
     "image": "god_love.svg",
@@ -31,7 +32,8 @@
       "鮮果": "love02.svg",
       "甜食": "love03.svg"
     },
-    "icon": "FaHeartbeat"
+    "icon": "FaHeartbeat",
+    "about": "月下老人，簡稱月老，為掌管男女姻緣之神，幫助痴男怨女獲得真愛。"
   },
   {
     "image": "god_safety.svg",
@@ -48,7 +50,8 @@
       "鮮果": "safety02.svg",
       "甜食": "safety03.svg"
     },
-    "icon": "AiFillSafetyCertificate"
+    "icon": "AiFillSafetyCertificate",
+    "about": "聰慧過人、沉默不多言，常於海湧風浪顯靈、颱風轉彎、保祐平安航行，是護國庇民的守護神。"
   },
   {
     "image": "god_study.svg",
@@ -65,7 +68,8 @@
       "鮮果": "study02.svg",
       "甜食": "study03.svg"
     },
-    "icon": "FaGraduationCap"
+    "icon": "FaGraduationCap",
+    "about": "是天上主宰人世間功名利祿的大神，主管考試、命運，及助佑讀書撰文之神。"
   },
   {
     "image": "god_wealth.svg",
@@ -82,7 +86,8 @@
       "鮮果": "wealth02.svg",
       "甜食": "wealth03.svg"
     },
-    "icon": "RiMoneyDollarCircleFill"
+    "icon": "RiMoneyDollarCircleFill",
+    "about": "黑麪濃須，騎黑虎，一手執銀鞭，一手持元寶，掌管金錢與財富的神明。"
   },
   {
     "image": "god_work.svg",
@@ -99,6 +104,7 @@
       "鮮果": "work02.svg",
       "甜食": "work03.svg"
     },
-    "icon": "MdWork"
+    "icon": "MdWork",
+    "about": "關公講究義氣、信守承諾，是黑白兩道、商業的敬拜模範。"
   }
 ]
