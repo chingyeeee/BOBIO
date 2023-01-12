@@ -138,6 +138,11 @@ const StartPayment = ({
       setShowModal(false);
       setTimeout(() => setShowReceiptModal(true), 3000);
       setDonateDate(Date.parse(new Date()));
+    } else {
+      userNameRef.current.value === "" && setUserNameError(true);
+      cardRef.current.value === "" && setCardError(true);
+      cardDateRef.current.value === "" && setCardDateError(true);
+      cardCVCRef.current.value === "" && setCardCVCError(true);
     }
   }
 
@@ -359,12 +364,12 @@ const ReceiptModal = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-md transform -translate-y-8 overflow-hidden rounded-xl bg-n1 p-6 shadow-lv1 transition-all">
+              <Dialog.Panel className="w-full max-w-[20rem] transform -translate-y-8 overflow-hidden rounded-xl bg-n1 p-6 shadow-lv1 transition-all">
                 <div className="flex flex-col items-center gap-8">
                   <Dialog.Title as="h3" className="text-lg text-p3">
                     捐獻完成!
                   </Dialog.Title>
-                  <div className="grid grid-cols-2 items-center flex-wrap w-full gap-4">
+                  <div className="max-w-4/5 grid grid-cols-2 items-center flex-wrap gap-4">
                     <p className="w-full text-caption text-s1 text-start">
                       捐獻編號
                     </p>
