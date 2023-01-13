@@ -99,9 +99,12 @@ export const NavBar = () => {
                         ${items.length * 399}
                       </p>
                     </div>
-                    <button className="w-full bg-p1 w-max py-3 text-caption md:text-normal text-p3 hover:text-n1 flex items-center justify-center gap-3">
+                    <Link
+                      to={"/shopping-cart"}
+                      className="w-full bg-p1 w-max py-3 text-caption md:text-normal text-p3 hover:text-n1 flex items-center justify-center gap-3"
+                    >
                       立即結帳
-                    </button>
+                    </Link>
                   </Fragment>
                 )}
               </div>

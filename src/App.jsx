@@ -7,6 +7,9 @@ const Pray = lazy(() => import("./assets/components/pages/Pray"));
 const DrawLots = lazy(() => import("./assets/components/pages/DrawLots"));
 const DonateMoney = lazy(() => import("./assets/components/pages/DonateMoney"));
 const Amulets = lazy(() => import("./assets/components/pages/Amulets"));
+const ShoppingCart = lazy(() =>
+  import("./assets/components/pages/ShoppingCart")
+);
 
 function App() {
   return (
@@ -19,6 +22,7 @@ function App() {
             <Route path="/draw-lots" element={<DrawLots />} />
             <Route path="/donate-money" element={<DonateMoney />} />
             <Route path="/amulets" element={<Amulets />} />
+            <Route path="/shopping-cart" element={<ShoppingCart />} />
           </Route>
         </Routes>
       </BrowserRouter>
