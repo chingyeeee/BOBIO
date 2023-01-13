@@ -2,9 +2,8 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import categoryData from "../../data/goddata.json";
 import BackgroundData from "../../data/amuletZodiacData.json";
-import { BsCaretDownFill, BsCheck } from "react-icons/bs";
-import Amulet01 from "../../images/amulets/amulet01.jpg";
 import { Button } from "../common/Button";
+import { getImageUrl } from "../utils/getImageUrl";
 
 const Amulets = () => {
   const [category, setCategory] = useState("健康");
@@ -13,6 +12,8 @@ const Amulets = () => {
   const [zodiacImage, setZodiacImage] = useState("");
   const [about, setAbout] = useState("");
   const [customMsg, setCustomMsg] = useState("");
+  const [showBack, setShowBack] = useState(false);
+  const [items, setItems] = useState([]);
   const msgRef = useRef();
 
   function getMsg() {
@@ -36,22 +37,76 @@ const Amulets = () => {
     });
   }
 
+  function handleAddCart() {
+    setItems([
+      ...items,
+      {
+        category: category,
+        zodiac: zodiac,
+        godImage: godImage,
+        zodiacImage: zodiacImage,
+        customMsg: customMsg,
+      },
+    ]);
+  }
+
   useEffect(() => {
     getGod();
     getBackground();
   }, [category, zodiac]);
 
   return (
-    <div className="container pt-16 lg:py-0 mx-auto min-h-[calc(100vh_-_173px)] md:min-h-[calc(100vh_-_156px)] lg:min-h-screen flex items-center justify-center pb-12 md:pb-0">
+    <div className="container pt-16 lg:py-0 mx-auto min-h-[calc(100vh_-_173px)] md:min-h-[calc(100vh_-_156px)] lg:min-h-screen flex items-center justify-center pb-12 lg:pb-0">
       <div className="flex flex-col md:flex-row px-3 gap-8">
         {/* product image */}
         <div className="flex flex-col md:max-w-[50%] lg:max-w-[40%] xl:max-w-[35%] gap-4 md:px-12">
           {/* big photo */}
-          <img className="rounded-xl" src={Amulet01} alt="amulet" />
+          <div className="relative">
+            <img
+              className="rounded-xl"
+              src={getImageUrl("amulets", zodiacImage)}
+              alt="amulet"
+            />
+            {showBack ? (
+              <p
+                className="absolute text-n1 inset-0 mx-auto flex items-center justify-center text-xl translate-y-3"
+                style={{
+                  writingMode: "vertical-rl",
+                  textOrientation: "upright",
+                }}
+              >
+                {customMsg}
+              </p>
+            ) : (
+              <img
+                className="absolute w-[40%] inset-0 m-auto translate-y-4"
+                src={getImageUrl("pray/gods", godImage)}
+                alt="god"
+              />
+            )}
+          </div>
+
           {/* small photos */}
           <div className="flex gap-2">
-            <img className="w-1/4 rounded-xl" src={Amulet01} alt="" />
-            <img className="w-1/4 rounded-xl" src={Amulet01} alt="" />
+            <div className="w-1/4 relative" onClick={() => setShowBack(false)}>
+              <img
+                className="rounded-xl"
+                src={getImageUrl("amulets", zodiacImage)}
+                alt="amulet"
+              />
+              <img
+                className="absolute w-[40%] inset-0 m-auto translate-y-1"
+                src={getImageUrl("pray/gods", godImage)}
+                alt="god"
+              />
+            </div>
+            <div className="w-1/4 relative" onClick={() => setShowBack(true)}>
+              <img
+                className="rounded-xl"
+                src={getImageUrl("amulets", zodiacImage)}
+                alt="amulet"
+              />
+            </div>
           </div>
         </div>
         {/* product detail */}
@@ -160,7 +215,7 @@ const Amulets = () => {
                 <label className="block text-lg text-p3">客製化文字</label>
                 <input
                   className="px-3 py-1.5 text-base text-s1 bg-n1 bg-clip-padding border border-solid border-s1 rounded-xl transition ease-in-out m-0 focus:text-p3 focus:bg-n1 focus:border-p1 focus:outline-none lg:py-2 lg:px-4"
-                  placeholder="請輸入文字（限制4字）"
+                  placeholder="請輸入訊息（限制4字）"
                   ref={msgRef}
                   value={customMsg}
                   onChange={getMsg}
@@ -172,7 +227,7 @@ const Amulets = () => {
           </div>
           {/* footer */}
           <div className="flex justify-center md:justify-start gap-8">
-            <Button text={"加入購物車"} />
+            <Button text={"加入購物車"} handleClick={handleAddCart} />
             <Button text={"立即購買"} />
           </div>
         </div>
