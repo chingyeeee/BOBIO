@@ -26,7 +26,7 @@ export const Footer = () => {
               />
             </li>
             <li>
-              <FooLink text={"平安符願"} color={"text-n1"} />
+              <FooLink text={"平安符願"} color={"text-n1"} href={"/amulets"} />
             </li>
             <li>
               <FooLink
