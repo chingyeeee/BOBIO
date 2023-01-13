@@ -57,8 +57,8 @@ const Amulets = () => {
   }, [category, zodiac, items]);
 
   return (
-    <div className="container pt-16 lg:py-0 mx-auto min-h-[calc(100vh_-_173px)] md:min-h-[calc(100vh_-_156px)] lg:min-h-screen flex items-center justify-center pb-12 lg:pb-0">
-      <div className="flex flex-col md:flex-row px-3 gap-8">
+    <div className="container pt-16 lg:py-0 mx-auto min-h-[calc(100vh_-_173px)] md:min-h-[calc(100vh_-_156px)] flex items-center justify-center pb-12 lg:pb-0">
+      <div className="flex flex-col md:flex-row px-3 gap-8 md:pt-6 lg:pt-0">
         {/* product image */}
         <div className="flex flex-col md:max-w-[50%] lg:max-w-[40%] xl:max-w-[35%] gap-4 md:px-12">
           {/* big photo */}
