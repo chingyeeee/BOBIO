@@ -53,7 +53,8 @@ const Amulets = () => {
   useEffect(() => {
     getGod();
     getBackground();
-  }, [category, zodiac]);
+    sessionStorage.setItem("items", JSON.stringify(items));
+  }, [category, zodiac, items]);
 
   return (
     <div className="container pt-16 lg:py-0 mx-auto min-h-[calc(100vh_-_173px)] md:min-h-[calc(100vh_-_156px)] lg:min-h-screen flex items-center justify-center pb-12 lg:pb-0">
@@ -132,10 +133,10 @@ const Amulets = () => {
                         className={({ active, checked }) =>
                           `${
                             active
-                              ? "ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-p1"
+                              ? "ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-p3"
                               : ""
                           }
-                  ${checked ? "bg-p1 bg-opacity-95 text-white" : "bg-white"}
+                  ${checked ? "bg-s1 bg-opacity-95 text-white" : "bg-white"}
                     relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                         }
                       >
@@ -181,10 +182,10 @@ const Amulets = () => {
                         className={({ active, checked }) =>
                           `${
                             active
-                              ? "ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-p1"
+                              ? "ring-2 ring-white ring-opacity-60 ring-offset-2 ring-offset-p3"
                               : ""
                           }
-                  ${checked ? "bg-p1 bg-opacity-95 text-white" : "bg-white"}
+                  ${checked ? "bg-s1 bg-opacity-95 text-white" : "bg-white"}
                     relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none`
                         }
                       >
