@@ -1,9 +1,10 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import categoryData from "../../data/goddata.json";
 import BackgroundData from "../../data/amuletZodiacData.json";
 import { Button } from "../common/Button";
 import { getImageUrl } from "../utils/getImageUrl";
+import { useNavigate } from "react-router-dom";
 
 const Amulets = () => {
   const [category, setCategory] = useState("健康");
@@ -15,6 +16,7 @@ const Amulets = () => {
   const [showBack, setShowBack] = useState(false);
   const [items, setItems] = useState([]);
   const msgRef = useRef();
+  const navigate = useNavigate();
 
   function getMsg() {
     setCustomMsg(msgRef.current.value);
@@ -48,6 +50,7 @@ const Amulets = () => {
         customMsg: customMsg,
       },
     ]);
+    setTimeout(() => navigate("/shopping-cart"), 100);
   }
 
   useEffect(() => {
@@ -229,7 +232,13 @@ const Amulets = () => {
           {/* footer */}
           <div className="flex justify-center md:justify-start gap-8">
             <Button text={"加入購物車"} handleClick={handleAddCart} />
-            <Button text={"立即購買"} />
+            <button
+              id="buy-now"
+              className="bg-p1 px-5 w-max py-2 text-normal md:text-lg text-p3 hover:text-n1 flex items-center gap-3 rounded-btn shadow-lv1"
+              onClick={handleAddCart}
+            >
+              立即購買
+            </button>
           </div>
         </div>
       </div>
