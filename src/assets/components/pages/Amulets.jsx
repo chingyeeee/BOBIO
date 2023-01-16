@@ -39,7 +39,7 @@ const Amulets = () => {
     });
   }
 
-  function handleAddCart() {
+  function handleAddCart(e) {
     setItems([
       ...items,
       {
@@ -50,7 +50,9 @@ const Amulets = () => {
         customMsg: customMsg,
       },
     ]);
-    setTimeout(() => navigate("/shopping-cart"), 100);
+
+    e.target.id === "buy-now" &&
+      setTimeout(() => navigate("/shopping-cart"), 100);
   }
 
   useEffect(() => {
@@ -235,7 +237,7 @@ const Amulets = () => {
             <button
               id="buy-now"
               className="bg-p1 px-5 w-max py-2 text-normal md:text-lg text-p3 hover:text-n1 flex items-center gap-3 rounded-btn shadow-lv1"
-              onClick={handleAddCart}
+              onClick={(e) => handleAddCart(e)}
             >
               立即購買
             </button>
