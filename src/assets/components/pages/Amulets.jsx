@@ -13,10 +13,17 @@ const Amulets = () => {
   const [zodiacImage, setZodiacImage] = useState("");
   const [about, setAbout] = useState("");
   const [customMsg, setCustomMsg] = useState("");
+  const [amount, setAmount] = useState(1);
   const [showBack, setShowBack] = useState(false);
   const [items, setItems] = useState([]);
   const msgRef = useRef();
   const navigate = useNavigate();
+
+  function handleAmount(e) {
+    e.preventDefault();
+    e.target.id === "minus" && amount > 1 && setAmount(amount - 1);
+    e.target.id === "plus" && setAmount(amount + 1);
+  }
 
   function getMsg() {
     setCustomMsg(msgRef.current.value);
@@ -43,11 +50,13 @@ const Amulets = () => {
     setItems([
       ...items,
       {
+        id: Date.parse(new Date()),
         category: category,
         zodiac: zodiac,
         godImage: godImage,
         zodiacImage: zodiacImage,
         customMsg: customMsg,
+        amount: amount,
       },
     ]);
 
@@ -64,9 +73,7 @@ const Amulets = () => {
   return (
     <div className="container pt-16 lg:py-0 mx-auto min-h-[calc(100vh_-_173px)] md:min-h-[calc(100vh_-_156px)] flex items-center justify-center pb-12 lg:pb-0">
       <div className="flex flex-col md:flex-row px-3 gap-8 md:pt-6 lg:pt-0">
-        {/* product image */}
         <div className="flex flex-col md:max-w-[50%] lg:max-w-[40%] xl:max-w-[35%] gap-4 md:px-12">
-          {/* big photo */}
           <div className="relative">
             <img
               className="rounded-xl"
@@ -91,8 +98,6 @@ const Amulets = () => {
               />
             )}
           </div>
-
-          {/* small photos */}
           <div className="flex gap-2">
             <div className="w-1/4 relative" onClick={() => setShowBack(false)}>
               <img
@@ -115,16 +120,36 @@ const Amulets = () => {
             </div>
           </div>
         </div>
-        {/* product detail */}
+
         <div className="flex flex-col gap-8">
-          {/* title */}
           <div className="flex flex-col gap-2">
             <h3 className="text-h3 text-p3">專屬於您的平安符</h3>
             <p className="text-lg text-s1">NT$399</p>
           </div>
-          {/* body */}
+
+          <div className="flex gap-2 justify-between">
+            <p className="text-lg text-p3">數量</p>
+            <div className="flex gap-4 items-center">
+              <span
+                id="minus"
+                className="cursor-pointer bg-p3 text-n1 px-1.5 rounded"
+                onClick={(e) => handleAmount(e)}
+              >
+                −
+              </span>
+              <p className="text-p3 text-normal">{amount}</p>
+
+              <span
+                id="plus"
+                className="cursor-pointer bg-p3 text-n1 px-1.5 rounded"
+                onClick={(e) => handleAmount(e)}
+              >
+                +
+              </span>
+            </div>
+          </div>
+
           <div className="flex flex-col gap-6">
-            {/* 種類x6 */}
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
                 <p className="text-lg text-p3">種類</p>
@@ -168,12 +193,12 @@ const Amulets = () => {
                   </div>
                 </RadioGroup>
               </div>
-              {/* 簡介 */}
+
               <div className="rounded-xl bg-n1 p-6 text-p3 text-lg">
                 {about}
               </div>
             </div>
-            {/* 生肖 */}
+
             <div className="flex flex-col gap-4">
               <div className="flex flex-col gap-2">
                 <p className="text-lg text-p3">生肖</p>
