@@ -15,6 +15,7 @@ const Amulets = () => {
   const [customMsg, setCustomMsg] = useState("");
   const [amount, setAmount] = useState(1);
   const [showBack, setShowBack] = useState(false);
+  const price = 399;
   const [items, setItems] = useState([]);
   const msgRef = useRef();
   const navigate = useNavigate();
@@ -57,6 +58,7 @@ const Amulets = () => {
         zodiacImage: zodiacImage,
         customMsg: customMsg,
         amount: amount,
+        price: price,
       },
     ]);
 
@@ -124,7 +126,7 @@ const Amulets = () => {
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-2">
             <h3 className="text-h3 text-p3">專屬於您的平安符</h3>
-            <p className="text-lg text-s1">NT$399</p>
+            <p className="text-lg text-s1">NT${price}</p>
           </div>
 
           <div className="flex gap-2 justify-between">
