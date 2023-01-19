@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 import { NavLink } from "./NavLink";
 import Logo from "../../images/logo.svg";
@@ -10,6 +10,7 @@ export const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [items, setItems] = useState([]);
+  const navigate = useNavigate();
 
   function handleDisplayMenu() {
     setShowMenu(!showMenu);
@@ -99,12 +100,14 @@ export const NavBar = () => {
                         ${items.length * 399}
                       </p>
                     </div>
-                    <Link
-                      to={"/shopping-cart"}
+                    <div
                       className="w-full bg-p1 w-max py-3 text-caption md:text-normal text-p3 hover:text-n1 flex items-center justify-center gap-3"
+                      onClick={() =>
+                        setTimeout(() => navigate("/shopping-cart"), 100)
+                      }
                     >
                       立即結帳
-                    </Link>
+                    </div>
                   </Fragment>
                 )}
               </div>
