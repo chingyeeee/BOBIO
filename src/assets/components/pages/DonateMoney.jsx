@@ -242,11 +242,6 @@ const StartPayment = ({
         <div className="flex items-center gap-4 justify-center mt-4">
           <Button text={"返回"} handleClick={reEnterDonateAmount} />
           <Button text={"結緣"} handleClick={handleDonate} />
-          {/* <input
-            className="bg-p1 px-5 w-max py-2 text-normal md:text-lg text-p3 hover:text-n1 flex items-center gap-3 rounded-btn shadow-lv1"
-            type="submit"
-            value={"結緣"}
-          /> */}
         </div>
       </form>
     </>
