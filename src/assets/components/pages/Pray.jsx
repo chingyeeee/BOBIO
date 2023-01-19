@@ -426,7 +426,7 @@ const Pray = () => {
   }
 
   return (
-    <div className="container pt-16 lg:py-0 mx-auto min-h-[calc(100vh_-_173px)] md:min-h-[calc(100vh_-_156px)] lg:min-h-screen flex items-center justify-center">
+    <div className="container pt-24 lg:py-0 mx-auto min-h-[calc(100vh_-_173px)] md:min-h-[calc(100vh_-_156px)] lg:min-h-screen flex items-center justify-center">
       {prayPhrase === 0 && (
         <ChooseCategory
           godImage={godImage}

@@ -317,7 +317,7 @@ const DrawLots = () => {
   }
 
   return (
-    <div className="container pt-16 lg:py-0 mx-auto min-h-[calc(100vh_-_173px)] md:min-h-[calc(100vh_-_156px)] flex items-center justify-center relative">
+    <div className="container pt-24 lg:py-0 mx-auto min-h-[calc(100vh_-_173px)] md:min-h-[calc(100vh_-_156px)] flex items-center justify-center relative">
       <div className="lg:flex lg:flex-row-reverse lg:items-center lg:gap-24">
         {drawPhrase === 0 && (
           <DrawUserName
