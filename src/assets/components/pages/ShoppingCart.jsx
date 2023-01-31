@@ -1,6 +1,7 @@
 import { Button } from "../common/Button";
 import { useEffect, useRef, useState } from "react";
 import { getImageUrl } from "../utils/getImageUrl";
+import { BsPlus, BsDash } from "react-icons/bs";
 
 const BuyProcess = ({ step, text, active }) => {
   return (
@@ -9,7 +10,7 @@ const BuyProcess = ({ step, text, active }) => {
         active ? "" : "opacity-30"
       }`}
     >
-      <span className="text-n1 bg-p3 rounded-full px-3 py-1 flex items-center justify-center">
+      <span className="text-n1 bg-p3 rounded-full w-8 h-8 flex items-center justify-center">
         {step}
       </span>
       <p className="text-caption md:text-lg text-p3">{text}</p>
@@ -17,7 +18,30 @@ const BuyProcess = ({ step, text, active }) => {
   );
 };
 
-const Item = ({ item, itemAmount, idx }) => {
+const Item = ({ item, itemList, idx, setTotalPay }) => {
+  const [amount, setAmount] = useState(itemList[idx].amount);
+
+  function handleItemAmount(e) {
+    if (e.target.id === "minus") {
+      if (amount === 1) return;
+      setAmount(amount - 1);
+      itemList[idx].amount = amount - 1;
+    }
+
+    if (e.target.id === "plus") {
+      setAmount(amount + 1);
+      itemList[idx].amount = amount + 1;
+    }
+
+    //根據item amount的新數量重新計算總金額
+    let total = 0;
+    itemList.map((item) => {
+      total += item.amount * item.price;
+    });
+
+    setTotalPay(total);
+  }
+
   return (
     <div key={item.id} className="flex bg-n1 px-3 md:px-6 py-3 items-center">
       <p className="hidden md:block w-[20%] text-p3 text-normal">宅配配送</p>
@@ -40,62 +64,41 @@ const Item = ({ item, itemAmount, idx }) => {
           <div className="flex justify-between md:hidden">
             <p className="text-p3 text-normal">NT$399</p>
             <div className="flex gap-2 items-center">
-              <span
+              <BsDash
                 id="minus"
-                className="cursor-pointer bg-p3 text-n1 px-1.5 rounded"
-                onClick={() => console.log(item.id)}
-              >
-                −
-              </span>
-              <p className="text-p3 text-normal">{itemAmount[idx].amount}</p>
-              <span
+                className="cursor-pointer text-p1"
+                size={"1.5rem"}
+                onClick={(e) => handleItemAmount(e)}
+              />
+              <p className="text-p3 text-normal">{amount}</p>
+              <BsPlus
                 id="plus"
-                className="cursor-pointer bg-p3 text-n1 px-1.5 rounded"
-              >
-                +
-              </span>
+                className="cursor-pointer text-p1"
+                size={"1.5rem"}
+                onClick={(e) => handleItemAmount(e)}
+              />
             </div>
           </div>
         </div>
       </div>
       <p className="hidden md:block w-[20%] text-p3 text-normal">NT$399</p>
       <div className="hidden md:flex w-[15%] gap-2 items-center ">
-        <span
-          id="minus"
-          className="cursor-pointer bg-p3 text-n1 px-1.5 rounded"
-        >
-          −
-        </span>
-        <p className="text-p3 text-normal">{itemAmount[idx].amount}</p>
-
-        <span id="plus" className="cursor-pointer bg-p3 text-n1 px-1.5 rounded">
-          +
-        </span>
+        <BsDash id="minus" className="cursor-pointer text-p1" size={"1.5rem"} />
+        <p className="text-p3 text-normal">{item.amount}</p>
+        <BsPlus id="plus" className="cursor-pointer text-p1" size={"1.5rem"} />
       </div>
     </div>
   );
 };
 
 const CheckShoppingItem = ({
-  items,
+  sessionItems,
   shippment,
-  itemAmount,
-  setItemAmout,
   totalPay,
+  itemList,
+  setTotalPay,
+  nextStep,
 }) => {
-  function handleItemAmount(e) {
-    e.preventDefault();
-
-    //傳入item id 修改itemAmount裡面的內容
-    // 1. onClick傳入e.target.id & item.id
-    // 2. 用itemAmount.filter(item=>item.id === item.id)找到對應的item內容
-    // 3. 改寫amount再傳回itemAmount
-    // 4. setItemAmount([...itemAmount,])
-
-    // e.target.id === "minus" && amount > 1 && setAmount(amount - 1);
-    // e.target.id === "plus" && setAmount(amount + 1);
-  }
-
   return (
     <>
       <div className="flex flex-col rounded-xl overflow-hidden">
@@ -109,13 +112,13 @@ const CheckShoppingItem = ({
           </p>
           <p className="hidden md:block w-[15%] text-p3 text-normal">數量</p>
         </div>
-        {items.map((item, idx) => (
+        {sessionItems.map((item, idx) => (
           <Item
             item={item}
-            key={idx}
+            key={item.id}
             idx={idx}
-            itemAmount={itemAmount}
-            setItemAmout={setItemAmout}
+            itemList={itemList}
+            setTotalPay={setTotalPay}
           />
         ))}
       </div>
@@ -140,11 +143,12 @@ const CheckShoppingItem = ({
           </p>
         </div>
       </div>
-      <Button className="ml-auto" text={"下一步"} />
+      <Button className="ml-auto" text={"下一步"} handleClick={nextStep} />
     </>
   );
 };
 
+//填寫收件資料
 const FillInDeliveryInfo = () => {
   const receiverNameRef = useRef();
   const receiverPhoneRef = useRef();
@@ -153,11 +157,13 @@ const FillInDeliveryInfo = () => {
 
   return (
     <div className="rounded-xl overflow-hidden bg-n1">
-      <h3 className="bg-p1 text-lg text-p3">收件人資料</h3>
-      <div className="flex flex-col items-center gap-4">
+      <h3 className="bg-p1 text-p3 text-p3 text-normal px-6 py-3">
+        收件人資料
+      </h3>
+      <div className="flex flex-col items-center gap-6 px-6 py-8 ">
         {/* checkbox */}
         {/* input */}
-        <div className="flex items-center text-left">
+        <div className="w-full flex items-center text-left">
           <label className="min-w-[30%] block text-caption text-s1">
             收件人姓名
           </label>
@@ -170,7 +176,7 @@ const FillInDeliveryInfo = () => {
             // onBlur={(e) => validation(e)}
           />
         </div>
-        <div className="flex items-center text-left">
+        <div className="w-full flex items-center text-left">
           <label className="min-w-[30%] block text-caption text-s1">
             收件人電話
           </label>
@@ -183,7 +189,7 @@ const FillInDeliveryInfo = () => {
             // onBlur={(e) => validation(e)}
           />
         </div>
-        <div className="flex items-center text-left">
+        <div className="w-full flex items-center text-left">
           <label className="min-w-[30%] block text-caption text-s1">
             電子信箱
           </label>
@@ -196,7 +202,7 @@ const FillInDeliveryInfo = () => {
             // onBlur={(e) => validation(e)}
           />
         </div>
-        <div className="flex items-center text-left">
+        <div className="w-full flex items-center text-left">
           <label className="min-w-[30%] block text-caption text-s1">
             收件地址
           </label>
@@ -209,12 +215,13 @@ const FillInDeliveryInfo = () => {
             // onBlur={(e) => validation(e)}
           />
         </div>
-        <Button text={"下一步"} />
+        <Button className="mt-6" text={"下一步"} />
       </div>
     </div>
   );
 };
 
+//線上付款
 const PaymentDetail = () => {
   return (
     <div className="rounded-xl overflow-hidden bg-n1">
@@ -228,43 +235,55 @@ const PaymentDetail = () => {
 };
 
 const ShoppingCart = () => {
-  const [items, setItems] = useState([]);
-  const [itemAmount, setItemAmout] = useState([]);
+  //session storage 裡面的items
+  const [sessionItems, setSessionItems] = useState([]);
+  //獨立items的id跟amount
+  const [itemList, setItemList] = useState([]);
+  //總金額
   const [totalPay, setTotalPay] = useState(0);
+  //預設運費
   const [shippment, setShippment] = useState(60);
+  //購物車步驟
   const [step, setStep] = useState(1);
 
-  console.log(itemAmount);
+  function nextStep() {
+    setStep(step + 1);
+  }
 
   function getSessionItems() {
-    const items = JSON.parse(sessionStorage.getItem("items"));
+    const shoppingCartItems = JSON.parse(sessionStorage.getItem("items"));
+    let total = 0;
 
-    if (items) {
-      //1.把session裡的購物車清單儲存到items
-      setItems(items);
+    if (shoppingCartItems) {
+      //1.把session裡的購物車清單儲存到sessionItems
+      setSessionItems(shoppingCartItems);
 
-      //2.把items裡的商品id跟對應的數量抓出來，方便即時更新畫面的商品數量
-      setItemAmout(
-        items.map((item) => {
+      //2.儲存獨立items
+      setItemList(
+        shoppingCartItems.map((shoppingCartItem) => {
           return {
-            id: item.id,
-            amount: item.amount,
-            price: item.price,
+            id: shoppingCartItem.id,
+            amount: shoppingCartItem.amount,
+            price: shoppingCartItem.price,
           };
         })
       );
 
       //3.計算totalPayment
-      let total = 0;
-      items.map((item) => {
+      shoppingCartItems.map((item) => {
         total += item.amount * item.price;
       });
+
       setTotalPay(total);
     }
   }
 
   function handlePrice() {
-    if (totalPay >= 1000) setShippment(0);
+    if (totalPay >= 1000) {
+      setShippment(0);
+    } else {
+      setShippment(60);
+    }
   }
 
   useEffect(() => {
@@ -276,21 +295,22 @@ const ShoppingCart = () => {
   }, [totalPay]);
 
   return (
-    <div className="container pt-24 lg:py-0 mx-auto min-h-[calc(100vh_-_173px)] md:min-h-[calc(100vh_-_156px)] flex items-center justify-center pb-12 lg:pb-0">
+    <div className="container pt-24 lg:py-0 mx-auto min-h-[calc(100vh_-_173px)] md:min-h-[calc(100vh_-_156px)] flex items-center justify-center pb-12 lg:pt-24 lg:pb-12">
       <div className="w-full px-3 flex flex-col gap-12 md:gap-14 lg:gap-16">
         <div className="w-full flex justify-between md:justify-around lg:justify-center lg:gap-20">
-          <BuyProcess step={step} text={"查看購物車"} active={step === 1} />
-          <BuyProcess step={step} text={"填寫收件資料"} active={step === 2} />
-          <BuyProcess step={step} text={"線上付款"} active={step === 3} />
-          <BuyProcess step={step} text={"訂單確認"} active={step === 4} />
+          <BuyProcess step={1} text={"查看購物車"} active={step === 1} />
+          <BuyProcess step={2} text={"填寫收件資料"} active={step === 2} />
+          <BuyProcess step={3} text={"線上付款"} active={step === 3} />
+          <BuyProcess step={4} text={"訂單確認"} active={step === 4} />
         </div>
         {step === 1 && (
           <CheckShoppingItem
-            items={items}
+            sessionItems={sessionItems}
             shippment={shippment}
             totalPay={totalPay}
-            itemAmount={itemAmount}
-            setItemAmout={setItemAmout}
+            nextStep={nextStep}
+            itemList={itemList}
+            setTotalPay={setTotalPay}
           />
         )}
         {step === 2 && <FillInDeliveryInfo />}

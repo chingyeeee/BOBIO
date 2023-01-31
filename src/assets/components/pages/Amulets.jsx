@@ -5,6 +5,7 @@ import BackgroundData from "../../data/amuletZodiacData.json";
 import { Button } from "../common/Button";
 import { getImageUrl } from "../utils/getImageUrl";
 import { useNavigate } from "react-router-dom";
+import { BsPlus, BsDash } from "react-icons/bs";
 
 const Amulets = () => {
   const [category, setCategory] = useState("健康");
@@ -132,22 +133,20 @@ const Amulets = () => {
           <div className="flex gap-2 justify-between">
             <p className="text-lg text-p3">數量</p>
             <div className="flex gap-4 items-center">
-              <span
+              <BsDash
                 id="minus"
-                className="cursor-pointer bg-p3 text-n1 px-1.5 rounded"
+                className="cursor-pointer text-p1"
+                size={"1.5rem"}
                 onClick={(e) => handleAmount(e)}
-              >
-                −
-              </span>
-              <p className="text-p3 text-normal">{amount}</p>
+              />
 
-              <span
+              <p className="text-p3 text-normal">{amount}</p>
+              <BsPlus
                 id="plus"
-                className="cursor-pointer bg-p3 text-n1 px-1.5 rounded"
+                className="cursor-pointer text-p1"
+                size={"1.5rem"}
                 onClick={(e) => handleAmount(e)}
-              >
-                +
-              </span>
+              />
             </div>
           </div>
 
