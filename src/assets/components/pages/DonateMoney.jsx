@@ -239,7 +239,7 @@ const StartPayment = ({
             )}
           </div>
         </div>
-        <div className="flex items-center gap-4 justify-center mt-4">
+        <div className="flex items-center gap-6 justify-center mt-4">
           <Button text={"返回"} handleClick={reEnterDonateAmount} />
           <Button text={"結緣"} handleClick={handleDonate} />
         </div>
