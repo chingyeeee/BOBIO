@@ -10,6 +10,7 @@ export const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [items, setItems] = useState([]);
+  const [totalPay, setTotalPay] = useState(0);
   const navigate = useNavigate();
 
   function handleDisplayMenu() {
@@ -21,6 +22,12 @@ export const NavBar = () => {
     const items = JSON.parse(sessionStorage.getItem("items"));
     if (items) {
       setItems(items);
+      let total = 0;
+      items.map((item) => {
+        total += item.amount * item.price;
+      });
+
+      setTotalPay(total);
     }
   }
 
@@ -96,9 +103,7 @@ export const NavBar = () => {
                     })}
                     <div className="flex items-center justify-between p-3">
                       <p className="text-caption text-p3">訂單總金額</p>
-                      <p className="text-caption text-s1">
-                        ${items.length * 399}
-                      </p>
+                      <p className="text-caption text-s1">${totalPay}</p>
                     </div>
                     <div
                       className="w-full bg-p1 w-max py-3 text-caption md:text-normal text-p3 hover:text-n1 flex items-center justify-center gap-3"
