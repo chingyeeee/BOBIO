@@ -100,9 +100,6 @@ const Item = ({ item, itemList, idx, setTotalPay }) => {
           onClick={(e) => handleItemAmount(e)}
         />
       </div>
-      <p className="hidden md:block flex-1 text-p3 text-normal">
-        已付款(信用卡)
-      </p>
     </div>
   );
 };
@@ -132,7 +129,7 @@ const CheckShoppingItem = ({
           <p className="hidden md:block w-[20%] text-p3 text-normal">
             單件價格
           </p>
-          <p className="hidden md:block w-[15%] text-p3 text-normal">數量</p>
+          <p className="hidden md:block w-[10%] text-p3 text-normal">數量</p>
         </div>
         {sessionItems.map((item, idx) => (
           <Item
@@ -239,7 +236,7 @@ const FillInDeliveryInfo = ({ nextStep, prevStep }) => {
   }
 
   return (
-    <div className="rounded-xl overflow-hidden bg-n1">
+    <div className="rounded-xl overflow-hidden bg-n1 md:w-[80%] lg:w-[50%] m-auto">
       <h3 className="bg-p1 text-p3 text-p3 text-normal px-6 py-3">
         收件人資料
       </h3>
@@ -433,14 +430,14 @@ const PaymentDetail = ({
   }
 
   return (
-    <div className="rounded-xl overflow-hidden bg-n1">
+    <div className="rounded-xl overflow-hidden bg-n1 md:w-[80%] lg:w-[50%] m-auto">
       <h3 className="bg-p1 text-p3 text-p3 text-normal px-6 py-3">付款方式</h3>
 
       <div className="flex flex-col items-center gap-4 px-6 py-8">
         {/* radio button */}
         <div className="w-full flex items-center text-left">
           <label
-            className="min-w-[30%] block text-caption text-s1"
+            className="min-w-[30%] md:min-w-[20%] block text-caption text-s1"
             htmlFor="orderNum"
           >
             訂單編號
@@ -454,7 +451,7 @@ const PaymentDetail = ({
         </div>
         <div className="w-full flex items-center text-left">
           <label
-            className="min-w-[30%] block text-caption text-s1"
+            className="min-w-[30%] md:min-w-[20%] block text-caption text-s1"
             htmlFor="orderNum"
           >
             訂單金額
@@ -468,7 +465,7 @@ const PaymentDetail = ({
         </div>
         <div className="w-full">
           <div className="flex items-center text-left">
-            <label className="min-w-[30%] block text-caption text-s1">
+            <label className="min-w-[30%] md:min-w-[20%] block text-caption text-s1">
               持卡人姓名
             </label>
             <input
@@ -481,14 +478,14 @@ const PaymentDetail = ({
             />
           </div>
           {userNameError && (
-            <p className="w-[70%] ml-auto pt-2 text-caption text-red-400">
+            <p className="w-[70%] md:w-[80%] ml-auto pt-2 text-caption text-red-400">
               請輸入持卡人姓名
             </p>
           )}
         </div>
         <div className="w-full">
           <div className="flex items-center text-left">
-            <label className="min-w-[30%] block text-caption text-s1">
+            <label className="min-w-[30%] md:min-w-[20%] block text-caption text-s1">
               信用卡號
             </label>
             <PatternFormat
@@ -500,19 +497,19 @@ const PaymentDetail = ({
             />
           </div>
           {cardError && (
-            <p className="w-[70%] ml-auto pt-2 text-caption text-red-400">
+            <p className="w-[70%] md:w-[80%] ml-auto pt-2 text-caption text-red-400">
               請輸入信用卡號
             </p>
           )}
         </div>
         <div className="w-full flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div className="md:w-[65%]">
+          <div className="w-auto">
             <div className="flex items-center text-left">
-              <label className="min-w-[30%] md:min-w-[48%] block text-caption text-s1">
+              <label className="min-w-[30%] md:min-w-[40%] block text-caption text-s1">
                 有效日期
               </label>
               <CardExpiry
-                className="w-[30%] md:w-full px-3 py-1.5 text-base text-s1 bg-p2 bg-clip-padding border border-solid border-s1 rounded-xl transition ease-in-out m-0 focus:text-p3 focus:bg-p2 focus:border-p1 focus:outline-none lg:py-2 lg:px-4"
+                className="w-[30%] md:w-[35%] px-3 py-1.5 text-base text-s1 bg-p2 bg-clip-padding border border-solid border-s1 rounded-xl transition ease-in-out m-0 focus:text-p3 focus:bg-p2 focus:border-p1 focus:outline-none lg:py-2 lg:px-4"
                 placeholder="MM/YY"
                 getInputRef={cardDateRef}
                 id="cardDate"
@@ -520,18 +517,18 @@ const PaymentDetail = ({
               />
             </div>
             {cardDateError && (
-              <p className="w-[70%] ml-auto pt-2 text-caption text-red-400">
+              <p className="w-[70%] md:w-[60%] ml-auto pt-2 text-caption text-red-400">
                 請輸入有效日期
               </p>
             )}
           </div>
-          <div className="md:w-[35%]">
+          <div className="w-auto">
             <div className="flex items-center text-left">
-              <label className="min-w-[30%] md:min-w-[50%] block text-caption text-s1">
+              <label className="min-w-[30%]  block text-caption text-s1">
                 安全碼
               </label>
               <PatternFormat
-                className="w-[20%] md:w-full px-3 py-1.5 text-base text-s1 bg-p2 bg-clip-padding border border-solid border-s1 rounded-xl transition ease-in-out m-0 focus:text-p3 focus:bg-p2 focus:border-p1 focus:outline-none lg:py-2 lg:px-4"
+                className="w-[20%] md:w-[25%] px-3 py-1.5 text-base text-s1 bg-p2 bg-clip-padding border border-solid border-s1 rounded-xl transition ease-in-out m-0 focus:text-p3 focus:bg-p2 focus:border-p1 focus:outline-none lg:py-2 lg:px-4"
                 format="###"
                 placeholder="CVC"
                 getInputRef={cardCVCRef}
@@ -560,10 +557,12 @@ const PaymentDetail = ({
 };
 
 //訂單確認後的Item
-const ItemRecord = ({ item }) => {
+const ItemRecord = ({ item, orderRecord }) => {
   return (
     <div key={item.id} className="flex bg-n1 px-3 md:px-6 py-3 items-center">
-      <p className="hidden md:block w-[15%] text-p3 text-normal">訂單編號</p>
+      <p className="hidden md:block w-[15%] text-p3 text-normal">
+        {orderRecord.recordTime}
+      </p>
       <p className="hidden md:block text-p3 text-normal w-[15%]">宅配配送</p>
       <div className="w-[95%] flex gap-2 md:items-center md:w-[30%]">
         <div className="relative rounded-xl overflow-hidden w-2/5 md:w-2/5">
@@ -584,6 +583,7 @@ const ItemRecord = ({ item }) => {
           <div className="flex justify-between md:hidden">
             <p className="text-p3 text-normal">NT$399</p>
             <div className="flex gap-2 items-center">
+              <p className="text-p3 text-normal">數量</p>
               <p className="text-p3 text-normal">{item.amount}</p>
             </div>
           </div>
@@ -601,18 +601,65 @@ const ItemRecord = ({ item }) => {
 };
 
 //完成訂單
-const CompleteShopping = ({ sessionItems }) => {
+const CompleteShopping = ({
+  sessionItems,
+  orderRecord,
+  totalPay,
+  shippment,
+}) => {
+  console.log(orderRecord);
   return (
-    <div className="flex flex-col rounded-xl overflow-hidden">
-      <div className="flex bg-p1 px-6 py-3 items-center">
-        <p className="hidden md:block w-[20%] text-p3 text-normal">配送方式</p>
-        <p className="w-[50%] text-p3 text-normal">商品資料</p>
-        <p className="hidden md:block w-[20%] text-p3 text-normal">單件價格</p>
-        <p className="hidden md:block w-[15%] text-p3 text-normal">數量</p>
+    <div>
+      <h3 className="text-h3 text-p3 text-center">訂單已建立</h3>
+      <p className="text-normal text-p3 text-center pt-3 pb-8">
+        感謝您的訂購，完整訂單已傳送至電子信箱。
+      </p>
+      <div className="flex flex-col rounded-xl overflow-hidden">
+        <div className="flex bg-p1 px-6 py-3 items-center">
+          <p className="hidden md:block w-[15%] text-p3 text-normal">
+            訂單編號
+          </p>
+          <p className="hidden md:block w-[15%] text-p3 text-normal">
+            配送方式
+          </p>
+          <p className="w-[30%] text-p3 text-normal">商品資料</p>
+          <p className="hidden md:block w-[15%] text-p3 text-normal">
+            單件價格
+          </p>
+          <p className="hidden md:block w-[8%] text-p3 text-normal">數量</p>
+          <p className="hidden md:block flex-1 text-p3 text-normal">付款狀態</p>
+        </div>
+        {sessionItems.map((item) => (
+          <ItemRecord item={item} key={item.id} orderRecord={orderRecord} />
+        ))}
+        <div className="bg-n1 p-6 md:hidden flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            <p className="text-p3 text-normal">訂單編號</p>
+            <p className="text-p3 text-normal">{orderRecord.recordTime}</p>
+          </div>
+          <div className="flex items-center justify-between">
+            <p className="text-p3 text-normal">配送方式</p>
+            <p className="text-p3 text-normal">宅配配送</p>
+          </div>
+          <div className="flex items-center justify-between">
+            <p className="text-p3 text-normal">運費</p>
+            <p className="text-p3 text-normal">${shippment}</p>
+          </div>
+          <div className="flex items-center justify-between">
+            <p className="text-p3 text-normal">合計</p>
+            <p className="text-p3 text-normal">${totalPay}</p>
+          </div>
+          <div className="flex items-center justify-between">
+            <p className="text-p3 text-normal">付款狀態</p>
+            <p className="text-p3 text-normal">已付款(信用卡)</p>
+          </div>
+        </div>
       </div>
-      {sessionItems.map((item) => (
-        <ItemRecord item={item} key={item.id} />
-      ))}
+      <Button
+        className="m-auto md:ml-auto md:mr-0 mt-12"
+        text={"返回首頁"}
+        href={"/"}
+      />
     </div>
   );
 };
@@ -706,7 +753,14 @@ const ShoppingCart = () => {
             setOrderRecord={setOrderRecord}
           />
         )}
-        {step === 4 && <CompleteShopping sessionItems={sessionItems} />}
+        {step === 4 && (
+          <CompleteShopping
+            sessionItems={sessionItems}
+            orderRecord={orderRecord}
+            totalPay={totalPay}
+            shippment={shippment}
+          />
+        )}
       </div>
     </div>
   );
