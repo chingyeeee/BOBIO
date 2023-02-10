@@ -119,7 +119,7 @@ export const NavBar = () => {
             </div>
           </Transition>
         </Link>
-        <Link to={"#"}>
+        <Link to={"/member"}>
           <HiUserCircle className="fill-p3 hover:fill-p1" size={"1.35rem"} />
         </Link>
         <HiMenuAlt3

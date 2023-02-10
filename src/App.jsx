@@ -10,6 +10,8 @@ const Amulets = lazy(() => import("./assets/components/pages/Amulets"));
 const ShoppingCart = lazy(() =>
   import("./assets/components/pages/ShoppingCart")
 );
+// import Member from "./assets/components/pages/Member";
+const Member = lazy(() => import("./assets/components/pages/Member"));
 
 function App() {
   return (
@@ -23,6 +25,7 @@ function App() {
             <Route path="/donate-money" element={<DonateMoney />} />
             <Route path="/amulets" element={<Amulets />} />
             <Route path="/shopping-cart" element={<ShoppingCart />} />
+            <Route path="/member" element={<Member />} />
           </Route>
         </Routes>
       </BrowserRouter>
